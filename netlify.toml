@@ -5,10 +5,6 @@
 [build]
   publish = "."
 
-# Netlify Identity + Git Gateway (pro Decap CMS admin panel)
-[[plugins]]
-  package = "@netlify/plugin-identity-widget"
-
 # Přesměrování — admin panel
 [[redirects]]
   from = "/admin"
