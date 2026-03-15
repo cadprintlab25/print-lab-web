@@ -1,14 +1,14 @@
 {
-  "logo_image": "",
-  "site_name": "PRINT LAB",
-  "site_subtitle": "CAD & 3D Printing",
+  "logo_image": "/img/print_lab_logo_only.png",
+  "site_name": "PRINT LAB | CAD & 3D PRINTING",
+  "site_subtitle": "Ing. Marek Petschenka",
   "owner_name": "Ing. Marek Petschenka",
   "contact": {
-    "phone": "+420 777 123 456",
-    "email": "info@printlab.cz",
-    "address_street": "Věžnice 123",
-    "address_city": "588 12 Věžnice u Jihlavy",
-    "ico": "",
+    "phone": "+420 603 319 742",
+    "email": "cadprintlab.25@gmail.com",
+    "address_street": "Věžnice 25",
+    "address_city": "588 27 Jamné u Jihlavy",
+    "ico": "08839204",
     "dic": ""
   },
   "social": {
