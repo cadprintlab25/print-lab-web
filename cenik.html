@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ceník Print Lab — 3D tisk od 70 Kč/h, laserové gravírování 600 Kč/h, CAD konstrukce od 300 Kč/h. Orientační ceny, finální nabídka na dotaz.">
+  <title>Ceník — PRINT LAB | 3D Tisk, Gravírování, CAD</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='14' fill='white'>PL</text></svg>">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">PL</span>
+      <span class="logo-text">
+        <span class="logo-main" data-cms="site-name">PRINT LAB</span>
+        <span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D Printing</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-mne.html">O mně</a></li>
+      <li><a href="sluzby.html">Služby</a></li>
+      <li><a href="fotogalerie.html">Galerie</a></li>
+      <li><a href="cenik.html" class="active">Ceník</a></li>
+      <li><a href="poptavka.html">Poptávka</a></li>
+      <li><a href="kontakt.html" class="btn-nav">Kontakt</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-orb"></div>
+  <div class="container page-header-content">
+    <div class="breadcrumb">
+      <a href="index.html">Úvod</a>
+      <span class="sep">/</span>
+      <span>Ceník</span>
+    </div>
+    <div class="section-label" style="margin-bottom:16px;">Transparentní ceny</div>
+    <h1 class="page-title">Ceník <span class="gradient-text">služeb</span></h1>
+    <p class="page-desc">Orientační ceny pro rychlou představu. Finální cena závisí na konkrétním projektu — vždy připravím přesnou individuální nabídku.</p>
+  </div>
+</header>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+
+    <!-- Note -->
+    <div class="pricing-note reveal">
+      <div class="pricing-note-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p><strong>Upozornění:</strong> Ceník je orientační a slouží k základnímu přehledu. Výsledná cena závisí na materiálu, složitosti modelu, době výroby, požadavcích na povrchovou úpravu a termínu dodání. <strong>Vždy připravím nezávaznou individuální nabídku.</strong> Kontaktujte mě pro přesné nacenění vašeho projektu.</p>
+    </div>
+
+    <!-- 3D PRINT -->
+    <div id="tisk" class="pricing-category reveal">
+      <div class="pricing-category-header">
+        <div class="pricing-category-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="pricing-category-title">3D Tisk — FDM</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Cena za hodinu tisku · tisk z modelu zákazníka</div>
+        </div>
+      </div>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Materiál</th>
+            <th>Typ</th>
+            <th>Cena / hodina</th>
+            <th>Poznámka</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="material-name">PLA</span></td>
+            <td><span class="material-type tag-blue" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--blue-subtle);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">Standard</span></td>
+            <td><span class="price-val">70 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Nejpoužívanější materiál, snadný tisk</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">PET-G</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--blue-subtle);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">Standard</span></td>
+            <td><span class="price-val">80 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Vyšší pevnost, vhodný pro funkční díly</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">PLA-CF</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Technický</span></td>
+            <td><span class="price-val">90 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Karbonové vlákno, vyšší tuhost</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">PET-G-CF</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Technický</span></td>
+            <td><span class="price-val">110 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Kombinace pevnosti a tuhosti CF</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">ABS</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Technický</span></td>
+            <td><span class="price-val">90 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Tepelná odolnost, uzavřená komora</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">ASA</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Technický</span></td>
+            <td><span class="price-val">90 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">UV odolnost, exteriérové aplikace</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">PA (Nylon)</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Technický</span></td>
+            <td><span class="price-val">110 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Vysoká houževnatost, kluznost</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">TPU (Flex)</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:rgba(16,185,129,0.1);color:var(--success);border:1px solid rgba(16,185,129,0.3);">Flexibilní</span></td>
+            <td><span class="price-val">120 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Pružný, odolný materiál</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CAD -->
+    <div id="cad" class="pricing-category reveal">
+      <div class="pricing-category-header">
+        <div class="pricing-category-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="pricing-category-title">CAD Konstrukce</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Cena za hodinu práce</div>
+        </div>
+      </div>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Typ práce</th>
+            <th>Složitost</th>
+            <th>Cena / hodina</th>
+            <th>Popis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="material-name">Tvorba CAD modelu</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--blue-subtle);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">Jednoduchý</span></td>
+            <td><span class="price-val">300 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Jednoduché těleso, základní geometrie</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">Tvorba CAD modelu</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Středně složitý</span></td>
+            <td><span class="price-val">400 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Více prvků, sestavy, parametrické modely</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">Tvorba CAD modelu</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.25);">Složitý</span></td>
+            <td><span class="price-val">500 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Komplexní geometrie, velké sestavy</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">Technické výkresy</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:rgba(16,185,129,0.1);color:var(--success);border:1px solid rgba(16,185,129,0.3);">3D + 2D doku.</span></td>
+            <td><span class="price-val">od 500 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Kompletní technická dokumentace</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">Konzultace &amp; poradenství</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--blue-subtle);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">Poradenství</span></td>
+            <td><span class="price-val">od 150 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">Technické poradenství a konzultace</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LASER -->
+    <div id="laser" class="pricing-category reveal">
+      <div class="pricing-category-header">
+        <div class="pricing-category-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        </div>
+        <div>
+          <div class="pricing-category-title">Laserové gravírování</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Cena za hodinu gravírování</div>
+        </div>
+      </div>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Materiál</th>
+            <th>Kategorie</th>
+            <th>Cena / hodina</th>
+            <th>Max. plocha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="material-name">Dřevo, kůže, plast</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Standardní</span></td>
+            <td><span class="price-val">600 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">340 × 340 mm</td>
+          </tr>
+          <tr>
+            <td><span class="material-name">Anodizovaný hliník</span></td>
+            <td><span class="material-type" style="padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);">Standardní</span></td>
+            <td><span class="price-val">600 Kč</span> <span class="price-unit">/ h</span></td>
+            <td style="font-size:0.8rem;color:var(--text-muted);">340 × 340 mm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Additional info -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;">
+      <div class="card" style="text-align:center;">
+        <div style="width:48px;height:48px;background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h4 style="margin-bottom:8px;">Individuální nabídka</h4>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Pro každý projekt připravím přesnou cenovou nabídku s termínem dodání.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="width:48px;height:48px;background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h4 style="margin-bottom:8px;">Materiál zahrnut</h4>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Ceny hodinové práce nezahrnují materiál. Ten je oceněn dle aktuálních nákladů.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="width:48px;height:48px;background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4 style="margin-bottom:8px;">Bez skrytých poplatků</h4>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Finální cena odpovídá nabídce. Transparentní fakturace bez překvapení.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Potřebujete přesnou <span class="gradient-text">cenovou nabídku?</span></h2>
+      <p>Pošlete mi poptávku s popisem projektu a připravím vám nezávaznou nabídku s termínem realizace.</p>
+      <div class="cta-buttons">
+        <a href="poptavka.html" class="btn btn-primary btn-lg">Odeslat poptávku</a>
+        <a href="kontakt.html" class="btn btn-secondary btn-lg">Přímý kontakt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo logo">
+          <span class="logo-icon">PL</span>
+          <span class="logo-text"><span class="logo-main" data-cms="site-name">PRINT LAB</span><span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D Printing</span></span>
+        </a>
+        <p>Profesionální 3D tisk, laserové gravírování a CAD konstrukce na míru.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Úvod</a></li>
+          <li><a href="sluzby.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Služby</a></li>
+          <li><a href="cenik.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Ceník</a></li>
+          <li><a href="poptavka.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Poptávka</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ceník</h4>
+        <ul class="footer-links">
+          <li><a href="#tisk"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>3D Tisk</a></li>
+          <li><a href="#cad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>CAD Konstrukce</a></li>
+          <li><a href="#laser"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Laserové gravírování</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-contact-item" style="padding:8px 0;"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg></div><div class="contact-text"><span class="contact-label">Telefon</span><span class="contact-value">+420 603 319 742</span></div></div>
+        <div class="footer-contact-item" style="padding:8px 0;"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="contact-text"><span class="contact-label">E-mail</span><span class="contact-value">cadprintlab.25@gmail.com</span></div></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 PRINT LAB — Ing. Marek Petschenka · IČO: 08839204</p></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+  <script src="js/cms-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+# ============================================
+#   PRINT LAB — Decap CMS konfigurace
+#   Správa obsahu webu přes GUI rozhraní
+# ============================================
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Složka pro nahrávání obrázků
+media_folder: "img"
+public_folder: "/img"
+
+# Jazyk rozhraní
+locale: cs
+
+# Zobrazení po přihlášení
+site_url: /
+display_url: /
+
+collections:
+
+  # ──────────────────────────────────────────
+  #   1. NASTAVENÍ WEBU (Logo, kontakty, texty)
+  # ──────────────────────────────────────────
+  - label: "⚙️ Nastavení webu"
+    name: settings
+    files:
+
+      - label: "🏠 Obecné & Kontakty"
+        name: general
+        file: "data/settings.json"
+        format: json
+        fields:
+
+          # Logo
+          - label: "Logo (obrázek)"
+            name: logo_image
+            widget: image
+            required: false
+            hint: "Nahraj logo ve formátu PNG nebo SVG. Doporučená výška: 48px."
+
+          - label: "Název firmy"
+            name: site_name
+            widget: string
+            default: "PRINT LAB"
+
+          - label: "Podtitul firmy"
+            name: site_subtitle
+            widget: string
+            default: "CAD & 3D Printing"
+
+          - label: "Jméno majitele"
+            name: owner_name
+            widget: string
+            default: "Ing. Marek Petschenka"
+
+          # Kontaktní údaje
+          - label: "📞 Kontaktní údaje"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Telefon", name: phone, widget: string, default: "+420 777 123 456" }
+              - { label: "Email", name: email, widget: string, default: "info@printlab.cz" }
+              - { label: "Adresa — ulice", name: address_street, widget: string, default: "Věžnice 123" }
+              - { label: "Adresa — město", name: address_city, widget: string, default: "588 12 Věžnice u Jihlavy" }
+              - { label: "IČO", name: ico, widget: string, required: false }
+              - { label: "DIČ", name: dic, widget: string, required: false }
+
+          # Sociální sítě
+          - label: "🔗 Sociální sítě"
+            name: social
+            widget: object
+            fields:
+              - { label: "Facebook URL", name: facebook, widget: string, required: false }
+              - { label: "Instagram URL", name: instagram, widget: string, required: false }
+              - { label: "LinkedIn URL", name: linkedin, widget: string, required: false }
+              - { label: "YouTube URL", name: youtube, widget: string, required: false }
+
+      # ── Hero sekce (úvodní stránka)
+      - label: "🎯 Hero — úvodní stránka"
+        name: hero
+        file: "data/hero.json"
+        format: json
+        fields:
+          - { label: "Hlavní nadpis (řádek 1)", name: headline1, widget: string, default: "Od nápadu" }
+          - { label: "Hlavní nadpis (řádek 2 — zvýrazněný)", name: headline2, widget: string, default: "k hotovému výrobku" }
+          - { label: "Popis pod nadpisem", name: description, widget: text, default: "Profesionální 3D tisk, laserové gravírování a CAD konstrukce na míru." }
+          - { label: "Text tlačítka (hlavní)", name: cta_primary, widget: string, default: "Poptávka zdarma" }
+          - { label: "Text tlačítka (vedlejší)", name: cta_secondary, widget: string, default: "Prohlédnout služby" }
+          - { label: "Hero obrázek / pozadí", name: hero_image, widget: image, required: false, hint: "Volitelný obrázek v pozadí hero sekce (1920×1080px)" }
+
+          # Statistiky
+          - label: "📊 Statistiky"
+            name: stats
+            widget: list
+            max: 4
+            fields:
+              - { label: "Číslo / Hodnota", name: value, widget: string }
+              - { label: "Popisek", name: label, widget: string }
+
+  # ──────────────────────────────────────────
+  #   2. GALERIE PRACÍ
+  # ──────────────────────────────────────────
+  - label: "🖼️ Galerie prací"
+    name: gallery
+    folder: "data/gallery"
+    create: true
+    slug: "{{slug}}"
+    format: json
+    summary: "{{title}} — {{category}}"
+    sortable_fields: ["title", "category", "date"]
+    fields:
+      - { label: "Název projektu", name: title, widget: string }
+      - { label: "Fotografie", name: image, widget: image, hint: "Min. 800×600px, formát JPG nebo PNG" }
+      - label: "Kategorie"
+        name: category
+        widget: select
+        options:
+          - { label: "3D Tisk", value: "3d-tisk" }
+          - { label: "Laserové gravírování", value: "gravírovani" }
+          - { label: "CAD modelování", value: "cad" }
+          - { label: "Ostatní", value: "ostatni" }
+      - { label: "Popis projektu", name: description, widget: text, required: false }
+      - { label: "Datum", name: date, widget: datetime, required: false }
+      - { label: "Zobrazit na titulní straně?", name: featured, widget: boolean, default: false }
+
+  # ──────────────────────────────────────────
+  #   3. CENÍK — položky
+  # ──────────────────────────────────────────
+  - label: "💰 Ceník"
+    name: cenik
+    files:
+
+      - label: "3D Tisk — ceny"
+        name: cenik_3d
+        file: "data/cenik-3d.json"
+        format: json
+        fields:
+          - label: "Položky ceníku"
+            name: items
+            widget: list
+            fields:
+              - { label: "Název služby", name: name, widget: string }
+              - { label: "Cena od (Kč)", name: price_from, widget: number }
+              - { label: "Jednotka", name: unit, widget: string, default: "Kč/hod" }
+              - { label: "Popis", name: description, widget: text, required: false }
+
+      - label: "Gravírování — ceny"
+        name: cenik_gravir
+        file: "data/cenik-gravir.json"
+        format: json
+        fields:
+          - label: "Položky ceníku"
+            name: items
+            widget: list
+            fields:
+              - { label: "Název služby", name: name, widget: string }
+              - { label: "Cena od (Kč)", name: price_from, widget: number }
+              - { label: "Jednotka", name: unit, widget: string, default: "Kč/ks" }
+              - { label: "Popis", name: description, widget: text, required: false }
+
+  # ──────────────────────────────────────────
+  #   4. STRÁNKA O MNĚ
+  # ──────────────────────────────────────────
+  - label: "👤 O mně"
+    name: o_mne
+    files:
+      - label: "Profil & Bio"
+        name: profil
+        file: "data/o-mne.json"
+        format: json
+        fields:
+          - { label: "Profilová fotografie", name: photo, widget: image, required: false, hint: "Čtvercový formát, min. 400×400px" }
+          - { label: "Jméno", name: name, widget: string, default: "Ing. Marek Petschenka" }
+          - { label: "Titul / Pozice", name: title, widget: string, default: "CAD Konstruktér & 3D Tiskař" }
+          - { label: "Krátký bio text", name: bio_short, widget: text }
+          - { label: "Delší popis", name: bio_long, widget: markdown, required: false }
+          - label: "Klíčové dovednosti"
+            name: skills
+            widget: list
+            field: { label: "Dovednost", name: skill, widget: string }
+          - label: "Vzdělání / Zkušenosti (timeline)"
+            name: timeline
+            widget: list
+            fields:
+              - { label: "Rok", name: year, widget: string }
+              - { label: "Popis", name: text, widget: text }

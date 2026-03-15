@@ -1,0 +1,30 @@
+# ============================================
+#   PRINT LAB — Netlify konfigurace
+# ============================================
+
+[build]
+  publish = "."
+
+# Netlify Identity + Git Gateway (pro Decap CMS admin panel)
+[[plugins]]
+  package = "@netlify/plugin-identity-widget"
+
+# Přesměrování — admin panel
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# HTTP hlavičky pro bezpečnost
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Cache-Control = "no-cache, no-store, must-revalidate"

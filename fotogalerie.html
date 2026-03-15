@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fotogalerie Print Lab — ukázky realizovaných projektů 3D tisku, laserového gravírování a CAD konstrukce.">
+  <title>Fotogalerie — PRINT LAB</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='14' fill='white'>PL</text></svg>">
+  <style>
+    /* Gallery-specific heights for placeholder items */
+    .gh-tall   { min-height: 320px; }
+    .gh-medium { min-height: 220px; }
+    .gh-short  { min-height: 160px; }
+
+    .gallery-placeholder-icon {
+      width: 64px; height: 64px;
+      background: var(--accent-subtle);
+      border-radius: var(--r-lg);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .gallery-placeholder-icon svg { width: 32px; height: 32px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">PL</span>
+      <span class="logo-text">
+        <span class="logo-main" data-cms="site-name">PRINT LAB</span>
+        <span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D Printing</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-mne.html">O mně</a></li>
+      <li><a href="sluzby.html">Služby</a></li>
+      <li><a href="fotogalerie.html" class="active">Galerie</a></li>
+      <li><a href="cenik.html">Ceník</a></li>
+      <li><a href="poptavka.html">Poptávka</a></li>
+      <li><a href="kontakt.html" class="btn-nav">Kontakt</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-orb"></div>
+  <div class="container page-header-content">
+    <div class="breadcrumb">
+      <a href="index.html">Úvod</a>
+      <span class="sep">/</span>
+      <span>Fotogalerie</span>
+    </div>
+    <div class="section-label" style="margin-bottom:16px;">Ukázky práce</div>
+    <h1 class="page-title">Foto<span class="gradient-text">galerie</span></h1>
+    <p class="page-desc">Každý projekt je jedinečný. Prohlédněte si ukázky realizovaných zakázek a načerpejte inspiraci pro váš vlastní projekt.</p>
+  </div>
+</header>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="container">
+
+    <!-- Filters -->
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" data-filter="all">Vše</button>
+      <button class="filter-btn" data-filter="print">3D Tisk</button>
+      <button class="filter-btn" data-filter="laser">Gravírování</button>
+      <button class="filter-btn" data-filter="cad">CAD Modely</button>
+    </div>
+
+    <!-- Gallery grid (placeholder items — nahradit vlastními fotkami) -->
+    <div class="gallery-grid reveal">
+
+      <!-- 3D Tisk -->
+      <div class="gallery-item gh-tall" data-category="print">
+        <div class="gallery-placeholder gh-tall">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>3D Tisk — Funkční díl</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">3D Tisk</div>
+            <div class="gallery-overlay-title">Funkční prototypový díl</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-medium" data-category="laser">
+        <div class="gallery-placeholder gh-medium">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <span>Gravírování na dřevo</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">Gravírování</div>
+            <div class="gallery-overlay-title">Personalizované dřevěné desky</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-short" data-category="cad">
+        <div class="gallery-placeholder gh-short">
+          <div class="gallery-placeholder-icon" style="width:48px;height:48px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <span>CAD Model</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">CAD</div>
+            <div class="gallery-overlay-title">Technický 3D model</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-medium" data-category="print">
+        <div class="gallery-placeholder gh-medium">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>3D Tisk — Vícebarevný</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">3D Tisk</div>
+            <div class="gallery-overlay-title">Vícebarevný designový objekt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-tall" data-category="laser">
+        <div class="gallery-placeholder gh-tall">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <span>Gravírování — Logo firmy</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">Gravírování</div>
+            <div class="gallery-overlay-title">Firemní gravírované logo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-short" data-category="print">
+        <div class="gallery-placeholder gh-short">
+          <div class="gallery-placeholder-icon" style="width:48px;height:48px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>Technická komponenta</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">3D Tisk</div>
+            <div class="gallery-overlay-title">Technická komponenta (ABS)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-medium" data-category="cad">
+        <div class="gallery-placeholder gh-medium">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <span>Technický výkres</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">CAD</div>
+            <div class="gallery-overlay-title">2D technická dokumentace</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-tall" data-category="print">
+        <div class="gallery-placeholder gh-tall">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>Designová dekorace — TPU</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">3D Tisk</div>
+            <div class="gallery-overlay-title">Designová dekorace (TPU)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gh-medium" data-category="laser">
+        <div class="gallery-placeholder gh-medium">
+          <div class="gallery-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <span>Gravírování — Kůže</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-content">
+            <div class="gallery-overlay-tag">Gravírování</div>
+            <div class="gallery-overlay-title">Gravírování na kůži</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload CTA -->
+    <div class="reveal" style="text-align:center;margin-top:56px;padding:48px;background:var(--bg-card);border:1px dashed var(--border-bright);border-radius:var(--r-xl);">
+      <div style="width:64px;height:64px;background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--accent);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <h3 style="margin-bottom:8px;">Galerie bude průběžně doplňována</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);max-width:400px;margin:0 auto 24px;">Pracujeme na přidání reálných fotografií hotových zakázek. Sledujte nás nebo se rovnou ozvěte pro ukázku.</p>
+      <a href="poptavka.html" class="btn btn-primary">Mám zájem o zakázku</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Líbí se vám ukázky?</h2>
+      <p>Každý projekt je vytvořen na míru. Pošlete mi poptávku a společně navrhnem řešení pro váš projekt.</p>
+      <div class="cta-buttons">
+        <a href="poptavka.html" class="btn btn-primary btn-lg">Odeslat poptávku</a>
+        <a href="sluzby.html" class="btn btn-secondary btn-lg">Prohlédnout služby</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo logo">
+          <span class="logo-icon">PL</span>
+          <span class="logo-text"><span class="logo-main" data-cms="site-name">PRINT LAB</span><span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D Printing</span></span>
+        </a>
+        <p>Profesionální 3D tisk, laserové gravírování a CAD konstrukce na míru.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Úvod</a></li>
+          <li><a href="o-mne.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>O mně</a></li>
+          <li><a href="sluzby.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Služby</a></li>
+          <li><a href="cenik.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Ceník</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <ul class="footer-links">
+          <li><a href="sluzby.html#print"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>3D Tisk FDM</a></li>
+          <li><a href="sluzby.html#laser"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Laserové gravírování</a></li>
+          <li><a href="sluzby.html#cad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>CAD Konstrukce</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-contact-item" style="padding:8px 0;"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg></div><div class="contact-text"><span class="contact-label">Telefon</span><span class="contact-value">+420 603 319 742</span></div></div>
+        <div class="footer-contact-item" style="padding:8px 0;"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="contact-text"><span class="contact-label">E-mail</span><span class="contact-value">cadprintlab.25@gmail.com</span></div></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 PRINT LAB — Ing. Marek Petschenka · IČO: 08839204</p></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+  <script src="js/cms-loader.js"></script>
+</body>
+</html>
