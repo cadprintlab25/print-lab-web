@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Služby Print Lab — zakázkový 3D tisk FDM/FFF, CAD konstruktérské činnosti, laserové gravírování, sušení filamentů. Ing. Marek Petschenka.">
+  <title>Služby — PRINT LAB | 3D Tisk, Gravírování, CAD</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://printlab.cz/sluzby.html">
+  <meta property="og:title" content="Nabídka služeb — PRINT LAB">
+  <meta property="og:description" content="Zakázkový 3D tisk FDM/FFF, CAD konstruktérské činnosti, laserové gravírování a sušení filamentů.">
+  <meta property="og:image" content="https://printlab.cz/img/og-image.jpg">
+  <meta property="og:locale" content="cs_CZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='14' fill='white'>PL</text></svg>">
+  <style>
+    /* ── Slideshow ── */
+    .service-slideshow {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .slideshow-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+    }
+    .slide.active { opacity: 1; }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--r-lg);
+    }
+    .slide-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    .slide-placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.25;
+    }
+    .slideshow-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+    .slideshow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(249,115,22,0.3);
+      border: none;
+      cursor: pointer;
+      transition: var(--t);
+      padding: 0;
+    }
+    .slideshow-dot.active {
+      background: var(--accent);
+      width: 20px;
+      border-radius: 4px;
+    }
+    /* Tags nowrap */
+    .tags-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+    .tags-row::-webkit-scrollbar { display: none; }
+    /* Service buttons */
+    .service-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .service-btns .btn {
+      flex: 1;
+      min-width: 140px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <img src="img/logo-color.svg" class="logo-img" alt="Print Lab logo">
+      <span class="logo-text">
+        <span class="logo-main" data-cms="site-name">PRINT LAB</span>
+        <span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D PRINTING | ING. MAREK PETSCHENKA</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-mne.html">O mně</a></li>
+      <li><a href="sluzby.html" class="active">Služby</a></li>
+      <li><a href="fotogalerie.html">Fotogalerie</a></li>
+      <li><a href="cenik.html">Ceník</a></li>
+      <li><a href="poptavka.html">Poptávka</a></li>
+      <li><a href="kontakt.html" class="btn-nav">Kontakt</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-orb"></div>
+  <div class="container page-header-content">
+    <div class="page-header-text">
+      <div class="breadcrumb">
+        <a href="index.html">Úvod</a>
+        <span class="sep">/</span>
+        <span>Služby</span>
+      </div>
+      <div class="section-label" style="margin-bottom:16px;">Co nabízím</div>
+      <h1 class="page-title">Nabídka <span class="gradient-text">služeb</span></h1>
+      <p class="page-desc">Zakázkový 3D tisk, CAD konstruktérské činnosti, laserové gravírování a sušení filamentů…<br>To vše pod jednou střechou a s osobním přístupem.</p>
+    </div>
+    <div class="page-header-logo" aria-hidden="true">
+      <div class="ph-ring"></div>
+      <div class="ph-ring ph-ring-2"></div>
+      <div class="ph-ring ph-ring-3"></div>
+      <img src="img/logo-white.svg" class="ph-logo-img" alt="">
+    </div>
+  </div>
+</header>
+
+<!-- 3D PRINT SERVICE -->
+<section id="print" style="background:var(--bg-primary);padding:var(--section-py) 0;">
+  <div class="container">
+    <div class="service-detail-grid">
+
+      <!-- SLIDESHOW -->
+      <div class="service-detail-visual reveal" style="padding:0;background:none;border:none;box-shadow:none;">
+        <div class="service-slideshow" id="slideshow-print">
+          <div class="slideshow-inner">
+            <div class="slide active">
+              <img src="img/print-1.jpg" alt="3D tisk ukázka 1">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/print-2.png" alt="3D tisk ukázka 2">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/print-3.jpg" alt="3D tisk ukázka 3">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/print-4.jpg" alt="3D tisk ukázka 4">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="slideshow-dots">
+            <button class="slideshow-dot active" data-index="0" aria-label="Snímek 1"></button>
+            <button class="slideshow-dot" data-index="1" aria-label="Snímek 2"></button>
+            <button class="slideshow-dot" data-index="2" aria-label="Snímek 3"></button>
+            <button class="slideshow-dot" data-index="3" aria-label="Snímek 4"></button>
+          </div>
+        </div>
+        <div class="service-visual-label" style="margin-top:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--accent)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Tisková plocha: <strong>320 × 330 × 350 mm</strong>
+        </div>
+      </div>
+
+      <div class="service-detail-text reveal reveal-delay-1">
+        <h2>3D Tisk <span class="gradient-text">FDM/FFF</span></h2>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">FDM/FFF (Fused Deposition Modeling / Fused Filament Fabrication) je aditivní technologie výroby spočívající v nanášení roztavených vrstev termoplastu. Disponuji dvěma tiskárnami s odlišnými tiskovými objemy a parametry pro flexibilní zpracování zakázek od jednoho kusu po malé série.</p>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">Výška vrstvy v rozsahu 0,05–0,5 mm umožňuje nastavit poměr kvality povrchu a rychlosti výroby dle charakteru zakázky. Obě tiskárny jsou vybaveny uzavřenou tiskovou komorou, která zajišťuje stabilní teplotní prostředí nezbytné pro tisk technických termoplastů a kompozitních materiálů s karbonovou nebo skelnou výztuží.</p>
+
+        <div class="service-features-list">
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Prototypy, funkční díly a technické komponenty
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Designové objekty, dekorace a dárky
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Tisk z podkladů zákazníka (STL, STEP, 3MF)
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Vícebarevný tisk (až 4 barvy, systém AMS)
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Technické termopl. a kompozity (ABS, ASA, PA, CF)
+          </div>
+        </div>
+
+        <div class="tags-row">
+          <span class="tag tag-orange">PLA</span>
+          <span class="tag tag-orange">PLA-CF</span>
+          <span class="tag tag-orange">PETG</span>
+          <span class="tag tag-orange">PETG-CF</span>
+          <span class="tag tag-blue">ABS</span>
+          <span class="tag tag-blue">ASA</span>
+          <span class="tag tag-blue">PA</span>
+          <span class="tag tag-green">TPU</span>
+        </div>
+
+        <div class="service-btns">
+          <a href="cenik.html#tisk" class="btn btn-primary">
+            Orientační ceník
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="fotogalerie.html" class="btn btn-secondary">
+            Ukázky 3D tisku
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAD SERVICE -->
+<section id="cad" style="background:var(--bg-base);padding:var(--section-py) 0;">
+  <div class="container">
+    <div class="service-detail-grid reverse">
+      <div class="service-detail-visual reveal" style="padding:0;background:none;border:none;box-shadow:none;">
+        <div class="service-slideshow" id="slideshow-cad">
+          <div class="slideshow-inner">
+            <div class="slide active">
+              <img src="img/cad-1.jpg" alt="CAD konstrukce ukázka 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/cad-2.jpg" alt="CAD konstrukce ukázka 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/cad-3.jpg" alt="CAD konstrukce ukázka 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="slideshow-dots">
+            <button class="slideshow-dot active" data-index="0" aria-label="Snímek 1"></button>
+            <button class="slideshow-dot" data-index="1" aria-label="Snímek 2"></button>
+            <button class="slideshow-dot" data-index="2" aria-label="Snímek 3"></button>
+          </div>
+        </div>
+        <div class="service-visual-label" style="margin-top:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--accent)"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Software: <strong>Fusion 360 &amp; ZW CAD Pro</strong>
+        </div>
+      </div>
+      <div class="service-detail-text reveal reveal-delay-1">
+        <h2>CAD <span class="gradient-text">Konstrukce</span></h2>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">Nabízím zpracování 3D CAD modelů, technických výkresů a konstrukčních řešení optimalizovaných pro konkrétní výrobní technologii. Pracuji v prostředí Autodesk Fusion 360 a ZW CAD Professional — nástroje s přímou vazbou na CAM a výstupní formáty pro aditivní i konvenční výrobu.</p>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">Navrhnu model od skici nebo úpravu existující geometrie, optimalizuji ji s ohledem na DFM (Design for Manufacturability) a poskytuji kompletní technickou dokumentaci včetně 2D výkresů s tolerancemi.</p>
+
+        <div class="service-features-list">
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Tvorba 3D modelů od skici nebo referenčního dílu
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Technické výkresy — 3D model + 2D dokumentace
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Optimalizace geometrie pro výrobu (DFM)
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Revize a úpravy existujících modelů
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Konzultace a technické poradenství
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Export: STL, STEP, DWG, DXF, 3MF
+          </div>
+        </div>
+
+        <div class="tags-row">
+          <span class="tag tag-orange">Fusion 360</span>
+          <span class="tag tag-orange">ZW CAD Pro</span>
+          <span class="tag tag-blue">STL / STEP</span>
+          <span class="tag tag-blue">DWG / DXF</span>
+          <span class="tag tag-green">3MF</span>
+        </div>
+
+        <div class="service-btns">
+          <a href="cenik.html#cad" class="btn btn-primary">
+            Orientační ceník
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="poptavka.html" class="btn btn-secondary">
+            Nezávazná poptávka
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LASER SERVICE -->
+<section id="laser" style="background:var(--bg-secondary);padding:var(--section-py) 0;">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-visual reveal" style="padding:0;background:none;border:none;box-shadow:none;">
+        <div class="service-slideshow" id="slideshow-laser">
+          <div class="slideshow-inner">
+            <div class="slide active">
+              <img src="img/laser-1.jpg" alt="Laserové gravírování ukázka 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/laser-2.jpg" alt="Laserové gravírování ukázka 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="img/laser-3.jpg" alt="Laserové gravírování ukázka 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="slideshow-dots">
+            <button class="slideshow-dot active" data-index="0" aria-label="Snímek 1"></button>
+            <button class="slideshow-dot" data-index="1" aria-label="Snímek 2"></button>
+            <button class="slideshow-dot" data-index="2" aria-label="Snímek 3"></button>
+          </div>
+        </div>
+        <div class="service-visual-label" style="margin-top:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--accent)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Gravírovací plocha: <strong>340 × 340 mm</strong>
+        </div>
+      </div>
+      <div class="service-detail-text reveal reveal-delay-1">
+        <h2>Laserové <span class="gradient-text">gravírování</span></h2>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">Laserová technologie umožňuje precizní gravírování s bodovým rozlišením až 0,02 × 0,02 mm. Disponuji dvěma druhy laserů (450 nm / 1064 nm). Výsledek je trvalý, odolný vůči mechanickému otěru a vhodný pro reprezentativní i průmyslové aplikace.</p>
+        <p style="text-align:justify;hyphens:none;word-break:normal;">Ideální pro personalizaci výrobků, firemní branding, označování, trofeje a výtvarné objekty. Zpracuji jak jednotlivé kusy, tak opakované série s konzistentní kvalitou na každém kusu.</p>
+
+        <div class="service-features-list">
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Personalizované dárky a předměty
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Firemní branding a označování výrobků
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Trofeje, plakety, jmenovky
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Dekorativní a umělecké předměty
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Gravírování loga, textu a vektorové grafiky
+          </div>
+        </div>
+
+        <div class="tags-row">
+          <span class="tag tag-orange">Dřevo</span>
+          <span class="tag tag-orange">Kůže</span>
+          <span class="tag tag-orange">Papír</span>
+          <span class="tag tag-orange">Plast</span>
+          <span class="tag tag-blue">Kovy</span>
+        </div>
+
+        <div class="service-btns">
+          <a href="cenik.html#laser" class="btn btn-primary">
+            Orientační ceník
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="poptavka.html" class="btn btn-secondary">
+            Nezávazná poptávka
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILAMENT DRYING SERVICE -->
+<section id="drying" style="background:var(--bg-primary);padding:var(--section-py) 0;">
+  <div class="container">
+    <div class="service-detail-grid reverse">
+      <div class="service-detail-visual reveal" style="padding:0;background:none;border:none;box-shadow:none;">
+        <div class="service-slideshow" id="service-img-drying">
+          <div class="slideshow-inner">
+            <div class="slide active">
+              <img src="img/drying-1.png" alt="Sušení filamentů — SUNLU FilaDryer S4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="slide-placeholder" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-6 5.686-6 10a6 6 0 0 0 12 0c0-4.314-6-10-6-10z"/><path d="M12 12c0 0-3 2.5-3 4a3 3 0 0 0 6 0c0-1.5-3-4-3-4z"/></svg>
+              </div>
+            </div>
+          </div>
+          <!-- Jeden obrázek — bez navigace -->
+        </div>
+        <div class="service-visual-label" style="margin-top:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--accent)"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Zařízení: <strong>SUNLU FilaDryer S4</strong>
+        </div>
+      </div>
+      <div class="service-detail-text reveal reveal-delay-1">
+        <h2>Sušení <span class="gradient-text">filamentů</span></h2>
+        <p>Vlhkost absorbovaná do filametu je jednou z nejčastějších příčin degradace kvality FDM/FFF tisku — projevuje se praskáním a bublením taveniny, oslabením mezivrstevných spojů a zhoršením mechanických a optických vlastností výtisku. Hygroskopické materiály jako PA, ABS nebo PETG jsou obzvláště náchylné.</p>
+        <p>Disponuji sušičkou SUNLU FilaDryer S4, která udržuje filament při přesně nastavené teplotě a nízké relativní vlhkosti. Předsušení je standardní součástí každé zakázky při tisku technických materiálů a na vyžádání je dostupné i jako samostatná služba pro zákaznické filamenty.</p>
+
+        <div class="service-features-list">
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Předsušení před tiskem — standardní součást zakázky
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Sušení zákaznických filamentů jako samostatná služba
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Teplota sušení nastavena dle specifikace výrobce
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Vhodné pro standardní cívky 1,75 mm i 2,85 mm
+          </div>
+          <div class="sfl-item">
+            <div class="sfl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Možnost tisku přímo ze sušičky (průběžné sušení)
+          </div>
+        </div>
+
+        <div class="tags-row">
+          <span class="tag tag-orange">PLA</span>
+          <span class="tag tag-orange">PETG</span>
+          <span class="tag tag-blue">ABS</span>
+          <span class="tag tag-blue">ASA</span>
+          <span class="tag tag-blue">PA</span>
+          <span class="tag tag-green">TPU</span>
+        </div>
+
+        <div class="service-btns">
+          <a href="cenik.html#sušení" class="btn btn-primary">
+            Orientační ceník
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="poptavka.html" class="btn btn-secondary">
+            Nezávazná poptávka
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Jak to funguje</span>
+      <h2 class="section-title">Postup <span class="gradient-text">zakázky</span></h2>
+      <p class="section-desc">Jednoduchý a transparentní proces od poptávky po doručení hotového výrobku.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-number">01</div>
+        <h4>Poptávka</h4>
+        <p>Pošlete mi poptávku s popisem projektu. Čím více detailů, tím přesnější nabídku mohu připravit.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-number">02</div>
+        <h4>Konzultace &amp; Nabídka</h4>
+        <p>Probereme vaše požadavky, navrhnu optimální řešení a připravím cenovou nabídku včetně termínu.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-number">03</div>
+        <h4>Výroba</h4>
+        <p>Po schválení zahájím výrobu. V průběhu vás informuji o postupu a případně konzultuji detaily.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-number">04</div>
+        <h4>Doručení</h4>
+        <p>Hotový výrobek připravím k vyzvednutí nebo zajistím dopravu. Po doručení jsem k dispozici pro dotazy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Připraven na váš projekt</h2>
+      <p>Ať je to prototyp, funkční díl, gravírovaný dárek nebo technický výkres — rád vám pomohu.</p>
+      <div class="cta-buttons">
+        <a href="poptavka.html" class="btn btn-primary btn-lg">Odeslat poptávku</a>
+        <a href="cenik.html" class="btn btn-secondary btn-lg">Zobrazit ceník</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo logo">
+          <img src="img/logo-color.svg" class="logo-img" alt="Print Lab logo">
+          <span class="logo-text">
+            <span class="logo-main" data-cms="site-name">PRINT LAB</span>
+            <span class="logo-sub" data-cms="site-subtitle">CAD &amp; 3D PRINTING | ING. MAREK PETSCHENKA</span>
+          </span>
+        </a>
+        <p>3D tisk, CAD konstrukce a laserové gravírování na míru.<br>Kvalita, přesnost a individuální přístup ke každé zakázce.</p>
+        <div class="footer-social">
+          <a href="#" data-email-link class="social-link" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="tel:+420603319742" class="social-link" aria-label="Telefon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Úvod</a></li>
+          <li><a href="o-mne.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>O mně</a></li>
+          <li><a href="sluzby.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Služby</a></li>
+          <li><a href="cenik.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Ceník</a></li>
+          <li><a href="kontakt.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <ul class="footer-links">
+          <li><a href="#print"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>3D Tisk (FDM, FFF)</a></li>
+          <li><a href="#cad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>CAD služby</a></li>
+          <li><a href="#laser"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Laserové gravírování</a></li>
+          <li><a href="#drying"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Sušení filamentů</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-contact-item" style="padding:8px 0;">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="contact-text"><span class="contact-label">Telefon</span><span class="contact-value">+420 603 319 742</span></div>
+        </div>
+        <div class="footer-contact-item" style="padding:8px 0;">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-text"><span class="contact-label">E-mail</span><span class="contact-value"><span data-email-text></span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PRINT LAB — Ing. Marek Petschenka · IČO: 08839204 · <a href="gdpr.html" style="color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">Zpracování osobních údajů</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/cms-loader.js"></script>
+<script>
+  function initSlideshow(id) {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const slides = container.querySelectorAll('.slide');
+    const dots   = container.querySelectorAll('.slideshow-dot');
+    if (slides.length <= 1) return; // jeden obrázek — bez autoplay
+    let current = 0;
+    let timer;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function startAuto() {
+      timer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(parseInt(dot.dataset.index));
+        startAuto();
+      });
+    });
+
+    startAuto();
+  }
+
+  initSlideshow('slideshow-print');
+  initSlideshow('slideshow-cad');
+  initSlideshow('slideshow-laser');
+  // service-img-drying — jeden snímek, autoplay se nespustí
+</script>
+</body>
+</html>

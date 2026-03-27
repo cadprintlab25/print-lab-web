@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Zpracování osobních údajů — PRINT LAB, Ing. Marek Petschenka. Informace dle nařízení GDPR (EU) 2016/679.">
+  <title>Zpracování osobních údajů — PRINT LAB</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='14' fill='white'>PL</text></svg>">
+  <style>
+    .gdpr-section { background: var(--bg-primary); padding: var(--section-py) 0; }
+    .gdpr-content { max-width: 800px; margin: 0 auto; }
+    .gdpr-content h2 { font-size: 1.25rem; color: var(--accent); margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .gdpr-content h2:first-of-type { margin-top: 0; }
+    .gdpr-content p { font-size: 0.925rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 14px; }
+    .gdpr-content ul { margin: 0 0 16px 20px; }
+    .gdpr-content li { font-size: 0.925rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 6px; }
+    .gdpr-content strong { color: var(--text-primary); }
+    .gdpr-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.875rem; }
+    .gdpr-table th { background: var(--bg-card); color: var(--text-primary); font-weight: 600; padding: 12px 16px; text-align: left; border: 1px solid var(--border); }
+    .gdpr-table td { padding: 10px 16px; border: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    .gdpr-table tr:nth-child(even) td { background: var(--bg-secondary); }
+    .gdpr-notice { background: var(--accent-subtle); border: 1px solid var(--accent-border); border-radius: var(--r-lg); padding: 20px 24px; margin-bottom: 32px; display: flex; gap: 14px; }
+    .gdpr-notice svg { flex-shrink: 0; color: var(--accent); margin-top: 2px; }
+    .gdpr-notice p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
+    .gdpr-updated { font-size: 0.8rem; color: var(--text-muted); margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <img src="img/logo-color.svg" class="logo-img" alt="Print Lab logo">
+      <span class="logo-text">
+        <span class="logo-main">PRINT LAB</span>
+        <span class="logo-sub">CAD &amp; 3D PRINTING | ING. MAREK PETSCHENKA</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-mne.html">O mně</a></li>
+      <li><a href="sluzby.html">Služby</a></li>
+      <li><a href="fotogalerie.html">Fotogalerie</a></li>
+      <li><a href="cenik.html">Ceník</a></li>
+      <li><a href="poptavka.html">Poptávka</a></li>
+      <li><a href="kontakt.html" class="btn-nav">Kontakt</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-orb"></div>
+  <div class="container page-header-content">
+    <div class="page-header-text">
+      <div class="breadcrumb">
+        <a href="index.html">Úvod</a>
+        <span class="sep">/</span>
+        <span>Zpracování osobních údajů</span>
+      </div>
+      <div class="section-label" style="margin-bottom:16px;">GDPR</div>
+      <h1 class="page-title">Zpracování <span class="gradient-text">osobních údajů</span></h1>
+      <p class="page-desc">Informace o zpracování osobních údajů dle nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR).</p>
+    </div>
+    <div class="page-header-logo" aria-hidden="true">
+      <div class="ph-ring"></div>
+      <div class="ph-ring ph-ring-2"></div>
+      <div class="ph-ring ph-ring-3"></div>
+      <img src="img/logo-white.svg" class="ph-logo-img" alt="">
+    </div>
+  </div>
+</header>
+
+<!-- GDPR CONTENT -->
+<section class="gdpr-section">
+  <div class="container">
+    <div class="gdpr-content reveal">
+
+      <div class="gdpr-notice">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Vaše soukromí je pro nás důležité. Zpracováváme pouze údaje nezbytné pro vyřízení vašich poptávek a odpovědí na dotazy. Nikdy neprodáváme vaše údaje třetím stranám.</p>
+      </div>
+
+      <h2>1. Správce osobních údajů</h2>
+      <p>
+        <strong>Ing. Marek Petschenka</strong><br>
+        Věžnice 25, 588 27 Jamné u Jihlavy<br>
+        IČO: 08839204<br>
+        E-mail: <span data-email-text></span><br>
+        Telefon: +420 603 319 742
+      </p>
+      <p>Správce nejmenoval pověřence pro ochranu osobních údajů (DPO), neboť zpracování nepodléhá povinnosti jeho jmenování.</p>
+
+      <h2>2. Jaké osobní údaje zpracováváme</h2>
+      <p>V rámci provozu webu a vyřizování zakázek zpracováváme následující kategorie osobních údajů:</p>
+      <ul>
+        <li><strong>Identifikační údaje:</strong> jméno a příjmení</li>
+        <li><strong>Kontaktní údaje:</strong> e-mailová adresa, telefonní číslo</li>
+        <li><strong>Projektové podklady:</strong> popisy zakázek, technické soubory přiložené k poptávce (STL, PDF, DXF apod.)</li>
+        <li><strong>Komunikační záznamy:</strong> obsah zpráv zaslaných prostřednictvím kontaktního formuláře</li>
+      </ul>
+      <p>Nezpracováváme žádné citlivé osobní údaje (zvláštní kategorie údajů dle čl. 9 GDPR).</p>
+
+      <h2>3. Účel a právní základ zpracování</h2>
+      <table class="gdpr-table">
+        <thead>
+          <tr>
+            <th>Účel zpracování</th>
+            <th>Právní základ</th>
+            <th>Doba uchování</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vyřízení nezávazné poptávky a příprava cenové nabídky</td>
+            <td>Oprávněný zájem (čl. 6 odst. 1 písm. f) GDPR)</td>
+            <td>6 měsíců od zaslání nabídky</td>
+          </tr>
+          <tr>
+            <td>Realizace zakázky a komunikace v průběhu výroby</td>
+            <td>Plnění smlouvy (čl. 6 odst. 1 písm. b) GDPR)</td>
+            <td>Po dobu trvání zakázky + 3 roky</td>
+          </tr>
+          <tr>
+            <td>Obecné dotazy zasílané přes kontaktní formulář</td>
+            <td>Oprávněný zájem (čl. 6 odst. 1 písm. f) GDPR)</td>
+            <td>12 měsíců od vyřízení dotazu</td>
+          </tr>
+          <tr>
+            <td>Plnění zákonných povinností (daňová evidence, účetnictví)</td>
+            <td>Právní povinnost (čl. 6 odst. 1 písm. c) GDPR)</td>
+            <td>10 let dle zákona o účetnictví</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Příjemci osobních údajů</h2>
+      <p>Osobní údaje nejsou předávány třetím stranám za účelem marketingu ani prodeje. Zpracovatelé, kteří mohou mít přístup k vašim údajům v rámci technického zajištění provozu webu:</p>
+      <ul>
+        <li><strong>Netlify Inc.</strong> — hosting webu a zpracování formulářů (USA, zapojen do DPF EU–USA)</li>
+        <li><strong>Google LLC</strong> — zobrazení mapy na stránce Kontakt (za účelem lokalizace sídla)</li>
+      </ul>
+      <p>Osobní údaje nejsou předávány do třetích zemí mimo rámec výše uvedených zpracovatelů.</p>
+
+      <h2>5. Vaše práva</h2>
+      <p>Jako subjekt údajů máte tato práva, která můžete uplatnit zasláním e-mailu nebo písemnou žádostí na adresu sídla:</p>
+      <ul>
+        <li><strong>Právo na přístup</strong> — právo získat informaci o tom, jaké údaje o vás zpracováváme</li>
+        <li><strong>Právo na opravu</strong> — právo požádat o opravu nepřesných nebo doplnění neúplných údajů</li>
+        <li><strong>Právo na výmaz</strong> — právo požádat o smazání údajů, pokud odpadl důvod jejich zpracování</li>
+        <li><strong>Právo na omezení zpracování</strong> — právo požádat o dočasné omezení zpracování</li>
+        <li><strong>Právo na přenositelnost</strong> — právo obdržet své údaje ve strukturovaném, strojově čitelném formátu</li>
+        <li><strong>Právo vznést námitku</strong> — právo vznést námitku proti zpracování založenému na oprávněném zájmu</li>
+        <li><strong>Právo podat stížnost</strong> — právo podat stížnost u dozorového úřadu: <strong>Úřad pro ochranu osobních údajů</strong>, Pplk. Sochora 27, 170 00 Praha 7, <a href="https://www.uoou.cz" style="color:var(--accent);" rel="noopener noreferrer" target="_blank">www.uoou.cz</a></li>
+      </ul>
+      <p>Na vaše žádosti odpovídáme bez zbytečného odkladu, nejpozději do 30 dnů.</p>
+
+      <h2>6. Zabezpečení osobních údajů</h2>
+      <p>Přijali jsme technická a organizační opatření k ochraně vašich osobních údajů před neoprávněným přístupem, ztrátou nebo zničením:</p>
+      <ul>
+        <li>Web je provozován výhradně přes šifrované HTTPS spojení</li>
+        <li>Přístup k administraci webu je chráněn autentizací</li>
+        <li>Formulářová data jsou zpracovávána prostřednictvím zabezpečené platformy Netlify</li>
+        <li>K osobním údajům má přístup pouze správce (Ing. Marek Petschenka)</li>
+      </ul>
+
+      <h2>7. Soubory cookie</h2>
+      <p>Tento web nepoužívá analytické ani marketingové cookies. Při zobrazení mapy Google (stránka Kontakt) může Google LLC ukládat vlastní cookies dle svých podmínek ochrany soukromí. Mapa se načítá s nastaveným omezením oprávnění (sandbox).</p>
+
+      <h2>8. Kontakt pro ochranu osobních údajů</h2>
+      <p>Pro uplatnění svých práv nebo s dotazy k tomuto dokumentu nás kontaktujte:</p>
+      <p>
+        <strong>E-mail:</strong> <a href="#" data-email-link style="color:var(--accent);"><span data-email-text></span></a><br>
+        <strong>Telefon:</strong> +420 603 319 742<br>
+        <strong>Adresa:</strong> Věžnice 25, 588 27 Jamné u Jihlavy
+      </p>
+
+      <p class="gdpr-updated">Tento dokument byl naposledy aktualizován: <strong>27. března 2026</strong>. Vyhrazujeme si právo tento dokument aktualizovat v souladu se změnami legislativy nebo zpracování.</p>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo logo">
+          <img src="img/logo-color.svg" class="logo-img" alt="Print Lab logo">
+          <span class="logo-text"><span class="logo-main">PRINT LAB</span><span class="logo-sub">CAD &amp; 3D PRINTING | ING. MAREK PETSCHENKA</span></span>
+        </a>
+        <p>Profesionální 3D tisk, laserové gravírování a CAD konstrukce na míru.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Úvod</a></li>
+          <li><a href="o-mne.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>O mně</a></li>
+          <li><a href="sluzby.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Služby</a></li>
+          <li><a href="kontakt.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-contact-item" style="padding:8px 0;">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.49 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.09 6.09l.96-.96a2 2 0 0 1 2.11-.45c.91.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="contact-text"><span class="contact-label">Telefon</span><span class="contact-value">+420 603 319 742</span></div>
+        </div>
+        <div class="footer-contact-item" style="padding:8px 0;">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-text"><span class="contact-label">E-mail</span><span class="contact-value" data-email-text></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PRINT LAB — Ing. Marek Petschenka · IČO: 08839204 · <a href="gdpr.html" style="color:var(--accent);text-decoration:none;">Zpracování osobních údajů</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/cms-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "name": "Gravírování — dřevo/plast", "price_from": 80, "unit": "Kč/ks", "description": "Personalizace, loga, texty" },
+    { "name": "Gravírování — kov", "price_from": 120, "unit": "Kč/ks", "description": "Nerez, hliník, eloxovaný hliník" },
+    { "name": "Řezání laserem", "price_from": 100, "unit": "Kč/hod", "description": "Dřevo, plast, kůže, plst" },
+    { "name": "Příprava grafiky", "price_from": 200, "unit": "Kč/projekt", "description": "Převod loga nebo fotografie" }
+  ]
+}

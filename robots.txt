@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /data/
+Disallow: /.claude/
+
+Allow: /
+
+Sitemap: https://printlab.cz/sitemap.xml

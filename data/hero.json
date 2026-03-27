@@ -1,0 +1,14 @@
+{
+  "headline1": "Od nápadu",
+  "headline2": "k hotovému výrobku",
+  "description": "3D tisk, CAD konstrukce a laserové gravírování na míru. Rychle, přesně s osobním přístupem.",
+  "cta_primary": "Poptávka zdarma",
+  "cta_secondary": "Prohlédnout služby",
+  "hero_image": "",
+  "stats": [
+    { "value": "500+", "label": "Dokončených projektů" },
+    { "value": "5+", "label": "Let zkušeností" },
+    { "value": "48h", "label": "Expresní výroba" },
+    { "value": "100%", "label": "Spokojených zákazníků" }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "photo": "",
+  "name": "Ing. Marek Petschenka",
+  "title": "CAD Konstruktér & 3D Tiskař",
+  "bio_short": "Jsem inženýr s vášní pro moderní výrobní technologie. Specializuji se na 3D tisk, laserové gravírování a CAD modelování s důrazem na preciznost a funkčnost každého výrobku.",
+  "bio_long": "## O mně\n\nVíce než 5 let se věnuji aditivní výrobě a digitálním výrobním technologiím. Pracuji se širokou škálou materiálů a zákazníků — od hobby projektů po průmyslové prototypy.\n\nKaždý projekt beru jako výzvu k nalezení nejlepšího řešení.",
+  "skills": [
+    "3D tisk (FDM, SLA)",
+    "CAD modelování (SolidWorks, Fusion 360)",
+    "Laserové gravírování",
+    "Reverzní inženýrství",
+    "Technická dokumentace"
+  ],
+  "timeline": [
+    { "year": "2019", "text": "Zahájení podnikání v oblasti 3D tisku" },
+    { "year": "2020", "text": "Rozšíření o laserové gravírování" },
+    { "year": "2022", "text": "Profesionální CAD studio" },
+    { "year": "2024", "text": "Více než 500 spokojených zákazníků" }
+  ]
+}

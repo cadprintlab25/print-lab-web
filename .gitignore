@@ -1,0 +1,32 @@
+# Claude Code pracovní soubory
+.claude/
+
+# Systémové soubory Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dočasné soubory
+*.tmp
+*.temp
+*.log
+
+# Node.js (pokud by se použil lokální server)
+node_modules/
+npm-debug.log*
+
+# Lokální vývojové skripty
+server.js
+console.log*

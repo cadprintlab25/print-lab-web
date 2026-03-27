@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "name": "3D tisk — základní", "price_from": 150, "unit": "Kč/hod", "description": "Standardní tisk PLA/PETG materiály" },
+    { "name": "3D tisk — technický", "price_from": 200, "unit": "Kč/hod", "description": "ASA, ABS, TPU a technické materiály" },
+    { "name": "Příprava tisku (slicing)", "price_from": 100, "unit": "Kč/projekt", "description": "Optimalizace modelu pro tisk" },
+    { "name": "Oprava / úprava modelu", "price_from": 300, "unit": "Kč/hod", "description": "Příprava dodaného 3D modelu" }
+  ]
+}
