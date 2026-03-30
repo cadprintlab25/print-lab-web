@@ -259,6 +259,16 @@ if (contactForm) {
 
     const formData = new FormData(contactForm);
 
+    // Web3Forms free nezpracovává binární přílohy — přiložené soubory
+    // vložíme jako seznam názvů do zprávy; zákazník je pošle e-mailem
+    const fileInput = document.getElementById('attachments');
+    if (fileInput && fileInput.files.length > 0) {
+      const names = Array.from(fileInput.files).map(f => f.name).join(', ');
+      const desc = formData.get('description') || '';
+      formData.set('description', desc + '\n\n📎 Zákazník přiložil soubory: ' + names);
+      formData.delete('attachments');
+    }
+
     fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
       .then(res => res.json())
       .then(data => {
