@@ -139,9 +139,13 @@
           <div class="form-title">Napište mi</div>
           <div class="form-subtitle">Pro projektové poptávky použijte <a href="poptavka.html" style="color:var(--accent);">poptávkový formulář</a>. Zde pro obecné dotazy.</div>
 
-          <form id="contactForm" name="kontakt" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-            <input type="hidden" name="form-name" value="kontakt">
-            <p style="display:none;"><label>Nevyplňujte: <input name="bot-field"></label></p>
+          <form id="contactForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="c9658dc9-225a-4a74-9c96-5620803da1c0">
+            <input type="hidden" name="subject" value="Nová zpráva — PRINT LAB">
+            <input type="hidden" name="from_name" value="PRINT LAB Web">
+            <input type="hidden" name="cc" value="petschenkamara@seznam.cz">
+            <input type="hidden" name="redirect" value="false">
+            <input type="checkbox" name="botcheck" style="display:none!important" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Jméno a příjmení *</label>
@@ -159,8 +163,8 @@
             </div>
 
             <div class="form-group">
-              <label for="subject">Předmět</label>
-              <select id="subject" name="subject">
+              <label for="tema">Předmět</label>
+              <select id="tema" name="tema">
                 <option value="" disabled selected>Vyberte téma...</option>
                 <option value="info">Obecný dotaz</option>
                 <option value="poptavka">Poptávka zakázky</option>
