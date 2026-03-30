@@ -243,7 +243,48 @@ if (fileUploadZone) {
   });
 }
 
-/* ---- Form handling (Web3Forms) ---- */
+/* ---- Form handling: Poptávka (Netlify Forms — podporuje přílohy) ---- */
+const poptavkaForm = document.getElementById('poptavkaForm');
+if (poptavkaForm) {
+  poptavkaForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = poptavkaForm.querySelector('.form-submit');
+    const successMsg = document.getElementById('formSuccess');
+    const originalBtnHtml = submitBtn.innerHTML;
+    const spinSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;animation:spin .8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>';
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = spinSvg + ' Odesílám…';
+
+    const formData = new FormData(poptavkaForm);
+
+    fetch('/', { method: 'POST', body: formData })
+      .then(res => {
+        if (!res.ok) throw new Error('Chyba odeslání');
+        submitBtn.innerHTML = '✓ Odesláno!';
+        submitBtn.style.background = '#10b981';
+        if (successMsg) successMsg.style.display = 'block';
+        poptavkaForm.reset();
+        selectedFiles = [];
+        renderFileList();
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+          submitBtn.style.background = '';
+          if (successMsg) successMsg.style.display = 'none';
+        }, 5000);
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Zkuste to znovu';
+        submitBtn.style.background = '#ef4444';
+        setTimeout(() => { submitBtn.style.background = ''; submitBtn.innerHTML = originalBtnHtml; }, 3000);
+      });
+  });
+}
+
+/* ---- Form handling: Kontakt (Web3Forms) ---- */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
@@ -257,19 +298,7 @@ if (contactForm) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = spinSvg + ' Odesílám…';
 
-    const formData = new FormData(contactForm);
-
-    // Web3Forms free nezpracovává binární přílohy — přiložené soubory
-    // vložíme jako seznam názvů do zprávy; zákazník je pošle e-mailem
-    const fileInput = document.getElementById('attachments');
-    if (fileInput && fileInput.files.length > 0) {
-      const names = Array.from(fileInput.files).map(f => f.name).join(', ');
-      const desc = formData.get('description') || '';
-      formData.set('description', desc + '\n\n📎 Zákazník přiložil soubory: ' + names);
-      formData.delete('attachments');
-    }
-
-    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(contactForm) })
       .then(res => res.json())
       .then(data => {
         if (!data.success) throw new Error(data.message || 'Chyba odeslání');
@@ -277,8 +306,6 @@ if (contactForm) {
         submitBtn.style.background = '#10b981';
         if (successMsg) successMsg.style.display = 'block';
         contactForm.reset();
-        selectedFiles = [];
-        renderFileList();
         setTimeout(() => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnHtml;
