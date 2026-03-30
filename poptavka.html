@@ -146,7 +146,7 @@
           <div class="form-title">Poptávkový formulář</div>
           <div class="form-subtitle">Vyplňte prosím co nejvíce informací o vašem projektu.</div>
 
-          <form id="poptavkaForm" name="poptavka" method="POST" action="/poptavka.html" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+          <form id="poptavkaForm" name="poptavka" method="POST" action="/poptavka.html?odeslano=1" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
             <input type="hidden" name="form-name" value="poptavka">
             <p style="display:none;"><label>Nevyplňujte: <input name="bot-field"></label></p>
             <div class="form-row">
@@ -294,5 +294,11 @@
 
 <script src="js/main.js?v=3"></script>
   <script src="js/cms-loader.js"></script>
+<script>
+  if (new URLSearchParams(window.location.search).get('odeslano') === '1') {
+    var s = document.getElementById('formSuccess');
+    if (s) { s.style.display = 'block'; s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  }
+</script>
 </body>
 </html>
