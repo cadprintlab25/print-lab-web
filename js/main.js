@@ -259,7 +259,7 @@ if (poptavkaForm) {
 
     const formData = new FormData(poptavkaForm);
 
-    fetch('/', { method: 'POST', body: formData })
+    fetch('/poptavka.html', { method: 'POST', body: formData })
       .then(res => {
         if (!res.ok) throw new Error('Chyba odeslání');
         submitBtn.innerHTML = '✓ Odesláno!';
