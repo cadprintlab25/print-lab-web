@@ -5,4 +5,4 @@ Disallow: /.claude/
 
 Allow: /
 
-Sitemap: https://printlab.cz/sitemap.xml
+Sitemap: https://print-lab.netlify.app/sitemap.xml
