@@ -1567,8 +1567,8 @@ a:hover .contact-value { color: var(--accent); }
 
 .about-photo-frame {
   aspect-ratio: 4/5;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: none;
   border-radius: var(--r-xl);
   overflow: hidden;
   position: relative;
