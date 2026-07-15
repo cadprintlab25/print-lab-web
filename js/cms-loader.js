@@ -186,6 +186,34 @@
       fragment.appendChild(card);
     }
     gallery.appendChild(fragment);
+    initGalleryFilters(gallery);
+  }
+
+  // ── Filtrování galerie — svázáno až po vložení položek do DOM ──
+  function initGalleryFilters(gallery) {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = gallery.querySelectorAll('.gallery-item');
+    if (filterButtons.length === 0) return;
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        const filter = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          const category = item.dataset.category;
+          if (filter === 'all' || category === filter) {
+            item.style.display = '';
+            setTimeout(() => item.style.opacity = '1', 10);
+          } else {
+            item.style.opacity = '0';
+            setTimeout(() => item.style.display = 'none', 250);
+          }
+        });
+      });
+    });
   }
 
   // ── Ceník — vzhled štítku typu materiálu ───────────────────

@@ -134,31 +134,8 @@ document.querySelectorAll('.spec-bar-fill').forEach(bar => {
 });
 
 /* ---- Gallery filters ---- */
-const filterButtons = document.querySelectorAll('.filter-btn');
-const galleryItems  = document.querySelectorAll('.gallery-item');
-
-if (filterButtons.length > 0) {
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-
-      const filter = btn.dataset.filter;
-
-      galleryItems.forEach(item => {
-        const category = item.dataset.category;
-        if (filter === 'all' || category === filter) {
-          item.style.display = '';
-          setTimeout(() => item.style.opacity = '1', 10);
-        } else {
-          item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 250);
-        }
-      });
-    });
-  });
-}
+/* Poznámka: samotné svázání filtrů s .gallery-item probíhá v js/cms-loader.js,
+   protože položky galerie se do DOM vkládají asynchronně až po načtení JSON. */
 
 /* ---- File upload zone ---- */
 const fileUploadZone = document.getElementById('fileUploadZone');
