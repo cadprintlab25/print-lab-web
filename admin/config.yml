@@ -117,8 +117,8 @@ collections:
         name: category
         widget: select
         options:
-          - { label: "3D Tisk", value: "3d-tisk" }
-          - { label: "Laserové gravírování", value: "gravírovani" }
+          - { label: "3D Tisk", value: "print" }
+          - { label: "Laserové gravírování", value: "laser" }
           - { label: "CAD modelování", value: "cad" }
           - { label: "Ostatní", value: "ostatni" }
       - { label: "Popis projektu", name: description, widget: text, required: false }
@@ -140,11 +140,19 @@ collections:
           - label: "Položky ceníku"
             name: items
             widget: list
+            summary: "{{name}} — od {{price_from}} Kč/h"
             fields:
-              - { label: "Název služby", name: name, widget: string }
+              - { label: "Materiál", name: name, widget: string }
+              - label: "Typ materiálu"
+                name: type
+                widget: select
+                options:
+                  - { label: "Standard", value: "standard" }
+                  - { label: "Technický", value: "technicky" }
+                  - { label: "Flexibilní", value: "flexibilni" }
               - { label: "Cena od (Kč)", name: price_from, widget: number }
-              - { label: "Jednotka", name: unit, widget: string, default: "Kč/hod" }
-              - { label: "Popis", name: description, widget: text, required: false }
+              - { label: "Jednotka", name: unit, widget: string, default: "Kč/h" }
+              - { label: "Poznámka", name: description, widget: text, required: false }
 
       - label: "Gravírování — ceny"
         name: cenik_gravir
@@ -154,11 +162,18 @@ collections:
           - label: "Položky ceníku"
             name: items
             widget: list
+            summary: "{{name}} — od {{price_from}} Kč/h"
             fields:
-              - { label: "Název služby", name: name, widget: string }
+              - { label: "Materiál", name: name, widget: string }
+              - label: "Kategorie"
+                name: type
+                widget: select
+                options:
+                  - { label: "Standard", value: "standard" }
+                  - { label: "Technický", value: "technicky" }
               - { label: "Cena od (Kč)", name: price_from, widget: number }
-              - { label: "Jednotka", name: unit, widget: string, default: "Kč/ks" }
-              - { label: "Popis", name: description, widget: text, required: false }
+              - { label: "Jednotka", name: unit, widget: string, default: "Kč/h" }
+              - { label: "Max. plocha", name: area, widget: string, default: "340 × 340 mm" }
 
   # ──────────────────────────────────────────
   #   4. STRÁNKA O MNĚ
@@ -174,8 +189,10 @@ collections:
           - { label: "Profilová fotografie", name: photo, widget: image, required: false, hint: "Čtvercový formát, min. 400×400px" }
           - { label: "Jméno", name: name, widget: string, default: "Ing. Marek Petschenka" }
           - { label: "Titul / Pozice", name: title, widget: string, default: "CAD Konstruktér & 3D Tiskař" }
-          - { label: "Krátký bio text", name: bio_short, widget: text }
-          - { label: "Delší popis", name: bio_long, widget: markdown, required: false }
+          - label: "Text 'O mně' (odstavce)"
+            name: bio
+            widget: list
+            field: { label: "Odstavec", name: paragraph, widget: text }
           - label: "Klíčové dovednosti"
             name: skills
             widget: list
@@ -183,6 +200,9 @@ collections:
           - label: "Vzdělání / Zkušenosti (timeline)"
             name: timeline
             widget: list
+            summary: "{{year}} — {{title}}"
             fields:
+              - { label: "Kategorie (nadpis skupiny, nech prázdné pro pokračování předchozí)", name: category, widget: string, required: false }
               - { label: "Rok", name: year, widget: string }
-              - { label: "Popis", name: text, widget: text }
+              - { label: "Titulek", name: title, widget: string }
+              - { label: "Popis", name: desc, widget: text, required: false }

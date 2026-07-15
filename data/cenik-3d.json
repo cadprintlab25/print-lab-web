@@ -1,8 +1,12 @@
 {
   "items": [
-    { "name": "3D tisk — základní", "price_from": 150, "unit": "Kč/hod", "description": "Standardní tisk PLA/PETG materiály" },
-    { "name": "3D tisk — technický", "price_from": 200, "unit": "Kč/hod", "description": "ASA, ABS, TPU a technické materiály" },
-    { "name": "Příprava tisku (slicing)", "price_from": 100, "unit": "Kč/projekt", "description": "Optimalizace modelu pro tisk" },
-    { "name": "Oprava / úprava modelu", "price_from": 300, "unit": "Kč/hod", "description": "Příprava dodaného 3D modelu" }
+    { "name": "PLA", "type": "standard", "price_from": 70, "unit": "Kč/h", "description": "Nejpoužívanější materiál, snadný tisk" },
+    { "name": "PETG", "type": "standard", "price_from": 80, "unit": "Kč/h", "description": "Vyšší pevnost, vhodný pro funkční díly" },
+    { "name": "PLA-CF", "type": "technicky", "price_from": 90, "unit": "Kč/h", "description": "Karbonové vlákno, vyšší tuhost" },
+    { "name": "PETG-CF", "type": "technicky", "price_from": 110, "unit": "Kč/h", "description": "Kombinace pevnosti a tuhosti CF" },
+    { "name": "ABS", "type": "technicky", "price_from": 90, "unit": "Kč/h", "description": "Tepelná odolnost, uzavřená komora" },
+    { "name": "ASA", "type": "technicky", "price_from": 90, "unit": "Kč/h", "description": "UV odolnost, exteriérové aplikace" },
+    { "name": "PA (Nylon)", "type": "technicky", "price_from": 110, "unit": "Kč/h", "description": "Vysoká houževnatost, kluznost" },
+    { "name": "TPU (Flex)", "type": "flexibilni", "price_from": 120, "unit": "Kč/h", "description": "Pružný, odolný materiál" }
   ]
 }

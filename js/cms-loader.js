@@ -123,6 +123,14 @@
     }
   }
 
+  // ── Popisky kategorií v přehledovém štítku ─────────────────
+  const GALLERY_CATEGORY_LABELS = {
+    print: '3D Tisk',
+    laser: 'Gravírování',
+    cad: 'CAD',
+    ostatni: 'Ostatní'
+  };
+
   // ── Načti galerii z JSON souborů ───────────────────────────
   async function loadGallery() {
     const gallery = document.querySelector('[data-cms="gallery-grid"]');
@@ -130,7 +138,7 @@
 
     // Načti manifest galerie (seznam JSON souborů)
     const manifest = await fetchJSON('/data/gallery-manifest.json');
-    if (!manifest || !manifest.files) return;
+    if (!manifest || !manifest.files || manifest.files.length === 0) return;
 
     const items = [];
     for (const file of manifest.files) {
@@ -144,12 +152,11 @@
     gallery.innerHTML = '';
     const fragment = document.createDocumentFragment();
     for (const item of items) {
+      const category = item.category || 'ostatni';
+
       const card = document.createElement('div');
       card.className = 'gallery-item';
-      card.dataset.category = item.category || 'ostatni';
-
-      const imgWrap = document.createElement('div');
-      imgWrap.className = 'gallery-img-wrap';
+      card.dataset.category = category;
 
       const img = document.createElement('img');
       img.src = item.image || '';
@@ -158,32 +165,160 @@
 
       const overlay = document.createElement('div');
       overlay.className = 'gallery-overlay';
-      const zoom = document.createElement('span');
-      zoom.className = 'gallery-zoom';
-      zoom.textContent = '🔍';
-      overlay.appendChild(zoom);
 
-      imgWrap.appendChild(img);
-      imgWrap.appendChild(overlay);
+      const overlayContent = document.createElement('div');
+      overlayContent.className = 'gallery-overlay-content';
 
-      const info = document.createElement('div');
-      info.className = 'gallery-info';
+      const tag = document.createElement('div');
+      tag.className = 'gallery-overlay-tag';
+      tag.textContent = GALLERY_CATEGORY_LABELS[category] || category;
 
-      const h3 = document.createElement('h3');
-      h3.textContent = item.title || '';
-      info.appendChild(h3);
+      const title = document.createElement('div');
+      title.className = 'gallery-overlay-title';
+      title.textContent = item.title || '';
 
-      if (item.description) {
-        const p = document.createElement('p');
-        p.textContent = item.description;
-        info.appendChild(p);
-      }
+      overlayContent.appendChild(tag);
+      overlayContent.appendChild(title);
+      overlay.appendChild(overlayContent);
 
-      card.appendChild(imgWrap);
-      card.appendChild(info);
+      card.appendChild(img);
+      card.appendChild(overlay);
       fragment.appendChild(card);
     }
     gallery.appendChild(fragment);
+  }
+
+  // ── Ceník — vzhled štítku typu materiálu ───────────────────
+  const CENIK_TYPE_STYLES = {
+    standard:   { label: 'Standard',   style: 'background:var(--blue-subtle);color:var(--blue);border:1px solid rgba(59,130,246,0.2);' },
+    technicky:  { label: 'Technický',  style: 'background:var(--accent-subtle);color:var(--accent);border:1px solid var(--accent-border);' },
+    flexibilni: { label: 'Flexibilní', style: 'background:rgba(16,185,129,0.1);color:var(--success);border:1px solid rgba(16,185,129,0.3);' }
+  };
+  const BADGE_BASE = 'padding:3px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;';
+
+  function buildCenikRow(item, lastColValue) {
+    const tr = document.createElement('tr');
+
+    const tdName = document.createElement('td');
+    const name = document.createElement('span');
+    name.className = 'material-name';
+    name.textContent = item.name || '';
+    tdName.appendChild(name);
+
+    const tdType = document.createElement('td');
+    const typeInfo = CENIK_TYPE_STYLES[item.type] || CENIK_TYPE_STYLES.standard;
+    const type = document.createElement('span');
+    type.className = 'material-type';
+    type.setAttribute('style', BADGE_BASE + typeInfo.style);
+    type.textContent = typeInfo.label;
+    tdType.appendChild(type);
+
+    const tdPrice = document.createElement('td');
+    const priceVal = document.createElement('span');
+    priceVal.className = 'price-val';
+    priceVal.textContent = 'od ' + (item.price_from != null ? item.price_from : '') + ' Kč';
+    const priceUnit = document.createElement('span');
+    priceUnit.className = 'price-unit';
+    priceUnit.textContent = ' / h';
+    tdPrice.appendChild(priceVal);
+    tdPrice.appendChild(priceUnit);
+
+    const tdLast = document.createElement('td');
+    tdLast.setAttribute('style', 'font-size:0.8rem;color:var(--text-muted);');
+    tdLast.textContent = lastColValue || '';
+
+    tr.appendChild(tdName);
+    tr.appendChild(tdType);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdLast);
+    return tr;
+  }
+
+  function renderCenikTable(selector, items, lastColKey) {
+    const tbody = document.querySelector(selector);
+    if (!tbody || !items || items.length === 0) return;
+    tbody.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    items.forEach(item => fragment.appendChild(buildCenikRow(item, item[lastColKey])));
+    tbody.appendChild(fragment);
+  }
+
+  // ── Načti ceník z JSON souborů (pokud je na stránce) ───────
+  async function loadCenik() {
+    const has3d = document.querySelector('[data-cms="cenik-3d-table"]');
+    const hasGravir = document.querySelector('[data-cms="cenik-gravir-table"]');
+    if (!has3d && !hasGravir) return;
+
+    const [cenik3d, cenikGravir] = await Promise.all([
+      has3d ? fetchJSON('/data/cenik-3d.json') : Promise.resolve(null),
+      hasGravir ? fetchJSON('/data/cenik-gravir.json') : Promise.resolve(null)
+    ]);
+
+    if (cenik3d && cenik3d.items) renderCenikTable('[data-cms="cenik-3d-table"]', cenik3d.items, 'description');
+    if (cenikGravir && cenikGravir.items) renderCenikTable('[data-cms="cenik-gravir-table"]', cenikGravir.items, 'area');
+  }
+
+  // ── Aplikuj obsah stránky O mně (o-mne.json) ───────────────
+  function applyOMne(o) {
+    if (!o) return;
+
+    if (Array.isArray(o.bio) && o.bio.length) {
+      document.querySelectorAll('[data-cms="about-bio"]').forEach(el => {
+        el.innerHTML = '';
+        o.bio.forEach(paragraph => {
+          const p = document.createElement('p');
+          p.textContent = paragraph;
+          el.appendChild(p);
+        });
+      });
+    }
+
+    if (Array.isArray(o.skills) && o.skills.length) {
+      document.querySelectorAll('[data-cms="about-skills"]').forEach(el => {
+        el.innerHTML = '';
+        o.skills.forEach(skill => {
+          const span = document.createElement('span');
+          span.className = 'skill-tag';
+          span.textContent = skill;
+          el.appendChild(span);
+        });
+      });
+    }
+
+    if (Array.isArray(o.timeline) && o.timeline.length) {
+      document.querySelectorAll('[data-cms="timeline-list"]').forEach(el => {
+        el.innerHTML = '';
+        let lastCategory = null;
+        o.timeline.forEach(item => {
+          if (item.category && item.category !== lastCategory) {
+            const cat = document.createElement('div');
+            cat.className = 'timeline-category';
+            cat.textContent = item.category;
+            el.appendChild(cat);
+            lastCategory = item.category;
+          }
+          const wrap = document.createElement('div');
+          wrap.className = 'timeline-item';
+
+          const year = document.createElement('div');
+          year.className = 'timeline-year';
+          year.textContent = item.year || '';
+
+          const title = document.createElement('div');
+          title.className = 'timeline-title';
+          title.textContent = item.title || '';
+
+          const desc = document.createElement('div');
+          desc.className = 'timeline-desc';
+          desc.textContent = item.desc || '';
+
+          wrap.appendChild(year);
+          wrap.appendChild(title);
+          wrap.appendChild(desc);
+          el.appendChild(wrap);
+        });
+      });
+    }
   }
 
   // ── Inicializace při DOM ready ─────────────────────────────
@@ -191,14 +326,16 @@
     const basePath = '/data';
 
     // Paralelní načtení dat
-    const [settings, hero] = await Promise.all([
+    const [settings, hero, omne] = await Promise.all([
       fetchJSON(basePath + '/settings.json'),
-      fetchJSON(basePath + '/hero.json')
+      fetchJSON(basePath + '/hero.json'),
+      fetchJSON(basePath + '/o-mne.json')
     ]);
 
     applySettings(settings);
     applyHero(hero);
-    await loadGallery();
+    applyOMne(omne);
+    await Promise.all([loadGallery(), loadCenik()]);
   }
 
   // Spusť po načtení DOM

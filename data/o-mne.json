@@ -1,20 +1,43 @@
 {
-  "photo": "",
+  "photo": "img/foto_omne_nobg.png",
   "name": "Ing. Marek Petschenka",
-  "title": "CAD Konstruktér & 3D Tiskař",
-  "bio_short": "Jsem inženýr s vášní pro moderní výrobní technologie. Specializuji se na 3D tisk, laserové gravírování a CAD modelování s důrazem na preciznost a funkčnost každého výrobku.",
-  "bio_long": "## O mně\n\nVíce než 5 let se věnuji aditivní výrobě a digitálním výrobním technologiím. Pracuji se širokou škálou materiálů a zákazníků — od hobby projektů po průmyslové prototypy.\n\nKaždý projekt beru jako výzvu k nalezení nejlepšího řešení.",
+  "title": "Aplikovaná technika pro průmyslovou praxi",
+  "bio": [
+    "Jmenuji se Marek, jsem vystudovaný inženýr v oboru Aplikovaná technika pro průmyslovou praxi. V rámci obou diplomových prací jsem využíval technologie 3D tisku, což odstartovalo moji cestu od teorie k vlastní zakázkové výrobě.",
+    "Specializuji se na FDM/FFF tisk, tvorbu 3D modelů, technických výkresů a dokumentací v CAD prostředí. Pracuji na zakázkách všech velikostí, od drobných předmětů po komponenty technického vybavení.",
+    "Cílem je být pro klienty nejen výrobcem, ale partnerem v celém procesu — od prvotní myšlenky přes konstrukční návrh až po finální výrobek."
+  ],
   "skills": [
-    "3D tisk (FDM, SLA)",
-    "CAD modelování (SolidWorks, Fusion 360)",
+    "Fusion 360",
+    "ZW CAD Professional",
+    "FDM tisk",
     "Laserové gravírování",
-    "Reverzní inženýrství",
-    "Technická dokumentace"
+    "3D modelování",
+    "Technické výkresy",
+    "Prototypování",
+    "CAD/CAM"
   ],
   "timeline": [
-    { "year": "2019", "text": "Zahájení podnikání v oblasti 3D tisku" },
-    { "year": "2020", "text": "Rozšíření o laserové gravírování" },
-    { "year": "2022", "text": "Profesionální CAD studio" },
-    { "year": "2024", "text": "Více než 500 spokojených zákazníků" }
+    { "category": "Vzdělání", "year": "2016", "title": "Střední škola průmyslová, technická a automobilní Jihlava", "desc": "Mechanik–Seřizovač (maturitní vzdělání)" },
+    { "year": "2019", "title": "Vysoká škola polytechnická Jihlava — Bc.", "desc": "Aplikovaná technika pro průmyslovou praxi (Bc.) — Bakalářská práce: Experimentální určení mechanických vlastností dílů vyrobených technologií 3D tisku" },
+    { "year": "2025", "title": "Vysoká škola polytechnická Jihlava — Ing.", "desc": "Aplikovaná technika pro průmyslovou praxi (Ing.) — Diplomová práce: Pevnostní analýza humerální dlahy druhé generace" },
+
+    { "category": "Praxe", "year": "2017–2018", "title": "TOOL Service, a.s.", "desc": "Výroba a přeostřování nástrojů pro strojírenskou výrobu." },
+    { "year": "2018", "title": "ORSTA, s.r.o.", "desc": "Práce pro strojírenskou výrobu." },
+    { "year": "2018–2019", "title": "CZ LOKO, a.s.", "desc": "Práce pro mechanickou konstrukci." },
+    { "year": "2019–2020", "title": "Technický pracovník, konstruktér a rozpočtář", "desc": "Technická příprava výroby, konstrukční práce a rozpočtování." },
+    { "year": "2020–2026*", "title": "OSVČ — CAD konstrukce & konzultace", "desc": "CAD konstrukce, projektový management, rozpočtové práce a konzultační poradenství." },
+
+    { "category": "CAD praxe", "year": "CAD", "title": "Zkušenosti s CAD konstrukcí a tvorbou technické dokumentace", "desc": "Práce s nástroji AutoCAD, Inventor, Fusion 360, Siemens NX a ZWCAD. Tvorba 3D modelů, technických výkresů a výrobní dokumentace pro různé průmyslové aplikace." },
+
+    { "category": "3D tisk", "year": "Začátky", "title": "První FDM 3D tiskárna — Anet A8", "desc": "Zpracování bakalářské práce, Rep-Rap upgrade na verzi AM8." },
+    { "year": "Snapmaker", "title": "Snapmaker 2.0 A350T", "desc": "Pořízení modulárního stroje Snapmaker 2.0 A350T (3-in-1) s podporou 3D tisku, laserového gravírování a CNC obrábění. Zahájení zakázkové výroby." },
+    { "year": "Rozšíření", "title": "Flashforge AD5X — rychlý vícebarevný tisk", "desc": "Doplnění parku o uzavřenou tiskárnu Flashforge AD5X s rychlostí tisku až 600 mm/s a vícebarevným tiskem přes IFS modul (až 4 barvy)." },
+    { "year": "Příslušenství", "title": "SUNLU FilaDryer S4 — sušička filamentu", "desc": "Doplnění parku o sušičku filamentu s možností vysoušení až 4 cívek najednou." },
+    { "year": "Upgrade č.1", "title": "Snapmaker 2.0 A350T — Bracing Kit + QuickSwap", "desc": "Zvýšení tuhosti lineárních modulů, vyšší rychlost a kvalita tisku, rychlá výměna pracovních nástrojů." },
+    { "year": "Upgrade č.2", "title": "Snapmaker 2.0 A350T — Dual Extrusion Module", "desc": "Možnost duálního tisku (2 barvy), podpora vysokoteplotních materiálů (až 300 °C), výkonný převodový systém pro vyšší přesnost tisku." },
+    { "year": "Upgrade č.3", "title": "Snapmaker 2.0 A350T — Laser 1064 nm", "desc": "Rozšíření schopností laserového gravírování na více materiálů." },
+
+    { "category": "", "year": "Budoucnost", "title": "Neustálé rozšiřování možností", "desc": "Plánuji rozšiřovat park strojů a škálu materiálů. Cílem je být kompletním vývojovým partnerem od prvního nákresu až po sériovou výrobu." }
   ]
 }
