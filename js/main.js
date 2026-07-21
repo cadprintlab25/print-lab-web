@@ -114,25 +114,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
 
-/* ---- Skill bars ---- */
-const barObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const bar   = entry.target;
-      const width = bar.dataset.width;
-      setTimeout(() => {
-        bar.style.width = width + '%';
-      }, 200);
-      barObserver.unobserve(bar);
-    }
-  });
-}, { threshold: 0.3 });
-
-document.querySelectorAll('.spec-bar-fill').forEach(bar => {
-  bar.style.width = '0%';
-  barObserver.observe(bar);
-});
-
 /* ---- Gallery filters ---- */
 /* Poznámka: samotné svázání filtrů s .gallery-item probíhá v js/cms-loader.js,
    protože položky galerie se do DOM vkládají asynchronně až po načtení JSON. */
@@ -347,24 +328,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ---- Typewriter effect for hero ---- */
-function typeWriter(element, text, speed = 50) {
-  let i = 0;
-  element.textContent = '';
-  function type() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
-  }
-  type();
-}
-
 /* ---- Add reveal classes to cards on load ---- */
 document.addEventListener('DOMContentLoaded', () => {
   // Stagger card animations
-  document.querySelectorAll('.card, .service-card, .value-card, .equipment-card').forEach((el, i) => {
+  document.querySelectorAll('.card, .service-card, .value-card').forEach((el, i) => {
     if (!el.classList.contains('reveal')) {
       el.classList.add('reveal');
       el.style.transitionDelay = (i % 4 * 0.1) + 's';

@@ -185,6 +185,7 @@
     }
     gallery.appendChild(fragment);
     initGalleryFilters(gallery);
+    initLightbox(gallery);
   }
 
   // ── Filtrování galerie — svázáno až po vložení položek do DOM ──
@@ -211,6 +212,73 @@
           }
         });
       });
+    });
+  }
+
+  // ── Lightbox — zvětšení fotky po kliknutí, s navigací ──────
+  function initLightbox(gallery) {
+    let lb = document.querySelector('.lightbox');
+    if (!lb) {
+      lb = document.createElement('div');
+      lb.className = 'lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.innerHTML =
+        '<button type="button" class="lightbox-close" aria-label="Zavřít"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>' +
+        '<button type="button" class="lightbox-prev" aria-label="Předchozí fotka"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+        '<button type="button" class="lightbox-next" aria-label="Další fotka"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>' +
+        '<div class="lightbox-content"><img class="lightbox-img" alt=""><div class="lightbox-caption"></div></div>';
+      document.body.appendChild(lb);
+    }
+
+    const imgEl = lb.querySelector('.lightbox-img');
+    const captionEl = lb.querySelector('.lightbox-caption');
+    let currentIdx = 0;
+
+    function visibleItems() {
+      return Array.from(gallery.querySelectorAll('.gallery-item')).filter(i => i.style.display !== 'none');
+    }
+
+    function show(idx) {
+      const items = visibleItems();
+      if (items.length === 0) return;
+      currentIdx = (idx + items.length) % items.length;
+      const item = items[currentIdx];
+      const img = item.querySelector('img');
+      const title = item.querySelector('.gallery-overlay-title');
+      imgEl.src = img.src;
+      imgEl.alt = img.alt;
+      captionEl.textContent = title ? title.textContent : '';
+    }
+
+    function open(idx) {
+      show(idx);
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    gallery.addEventListener('click', (e) => {
+      const item = e.target.closest('.gallery-item');
+      if (!item) return;
+      const idx = visibleItems().indexOf(item);
+      if (idx !== -1) open(idx);
+    });
+
+    lb.querySelector('.lightbox-close').addEventListener('click', close);
+    lb.querySelector('.lightbox-prev').addEventListener('click', () => show(currentIdx - 1));
+    lb.querySelector('.lightbox-next').addEventListener('click', () => show(currentIdx + 1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currentIdx - 1);
+      if (e.key === 'ArrowRight') show(currentIdx + 1);
     });
   }
 
@@ -280,8 +348,46 @@
       hasGravir ? fetchJSON('/data/cenik-gravir.json') : Promise.resolve(null)
     ]);
 
-    if (cenik3d && cenik3d.items) renderCenikTable('[data-cms="cenik-3d-table"]', cenik3d.items, 'description');
+    if (cenik3d && cenik3d.items) {
+      renderCenikTable('[data-cms="cenik-3d-table"]', cenik3d.items, 'description');
+      initCalculator(cenik3d.items);
+    }
     if (cenikGravir && cenikGravir.items) renderCenikTable('[data-cms="cenik-gravir-table"]', cenikGravir.items, 'area');
+  }
+
+  // ── Kalkulačka orientační ceny (materiál × hodiny) ─────────
+  function initCalculator(items) {
+    const wrap = document.querySelector('[data-cms="price-calculator"]');
+    if (!wrap || !items || items.length === 0) return;
+
+    const materialSelect = wrap.querySelector('#calcMaterial');
+    const hoursInput = wrap.querySelector('#calcHours');
+    const resultEl = wrap.querySelector('#calcResult');
+    if (!materialSelect || !hoursInput || !resultEl) return;
+
+    materialSelect.innerHTML = '';
+    items.forEach((item, idx) => {
+      const opt = document.createElement('option');
+      opt.value = String(idx);
+      opt.textContent = item.name + ' (od ' + item.price_from + ' Kč/h)';
+      materialSelect.appendChild(opt);
+    });
+
+    function calculate() {
+      const item = items[Number(materialSelect.value)];
+      const hours = parseFloat(hoursInput.value);
+      if (!item || !hours || hours <= 0) {
+        resultEl.innerHTML = 'Zadejte odhadovanou dobu tisku v hodinách.';
+        return;
+      }
+      const price = Math.round(item.price_from * hours);
+      resultEl.innerHTML = 'Orientační cena materiálu <strong>' + item.name + '</strong> na ' + hours + ' h tisku: ' +
+        '<span class="calc-price">od ' + price.toLocaleString('cs-CZ') + ' Kč</span>';
+    }
+
+    materialSelect.addEventListener('change', calculate);
+    hoursInput.addEventListener('input', calculate);
+    calculate();
   }
 
   // ── Aplikuj obsah stránky O mně (o-mne.json) ───────────────
@@ -347,21 +453,81 @@
     }
   }
 
+  // ── Reference / recenze zákazníků (reviews.json) ───────────
+  function starMarkup(rating) {
+    const r = Math.max(0, Math.min(5, Math.round(rating) || 0));
+    let out = '';
+    for (let i = 0; i < 5; i++) out += i < r ? '★' : '<span class="star-empty">★</span>';
+    return out;
+  }
+
+  async function loadReviews() {
+    const section = document.querySelector('[data-cms="reviews-section"]');
+    const grid = document.querySelector('[data-cms="reviews-grid"]');
+    if (!section || !grid) return;
+
+    const data = await fetchJSON('/data/reviews.json');
+    if (!data || !Array.isArray(data.items) || data.items.length === 0) return; // žádné recenze zatím -> sekce zůstává skrytá
+
+    grid.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    data.items.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'review-card';
+
+      const stars = document.createElement('div');
+      stars.className = 'review-stars';
+      stars.innerHTML = starMarkup(r.rating);
+
+      const text = document.createElement('p');
+      text.className = 'review-text';
+      text.textContent = '„' + (r.text || '') + '“';
+
+      const author = document.createElement('div');
+      author.className = 'review-author';
+
+      const name = document.createElement('span');
+      name.className = 'review-name';
+      name.textContent = r.name || '';
+      author.appendChild(name);
+
+      if (r.service) {
+        const service = document.createElement('span');
+        service.className = 'review-service';
+        service.textContent = r.service;
+        author.appendChild(service);
+      }
+
+      card.appendChild(stars);
+      card.appendChild(text);
+      card.appendChild(author);
+      fragment.appendChild(card);
+    });
+    grid.appendChild(fragment);
+
+    section.style.display = '';
+    section.classList.add('visible');
+  }
+
   // ── Inicializace při DOM ready ─────────────────────────────
   async function init() {
     const basePath = '/data';
 
-    // Paralelní načtení dat
+    // Nastavení (název, kontakty) se používá na každé stránce (navigace, patička)
+    const needsHero = !!document.querySelector('[data-cms="hero-description"], [data-cms="cta-primary"], [data-cms="cta-secondary"]');
+    const needsOMne = !!document.querySelector('[data-cms="about-bio"], [data-cms="about-skills"], [data-cms="timeline-list"]');
+
+    // Paralelní načtení dat — jen to, co daná stránka skutečně používá
     const [settings, hero, omne] = await Promise.all([
       fetchJSON(basePath + '/settings.json'),
-      fetchJSON(basePath + '/hero.json'),
-      fetchJSON(basePath + '/o-mne.json')
+      needsHero ? fetchJSON(basePath + '/hero.json') : Promise.resolve(null),
+      needsOMne ? fetchJSON(basePath + '/o-mne.json') : Promise.resolve(null)
     ]);
 
     applySettings(settings);
     applyHero(hero);
     applyOMne(omne);
-    await Promise.all([loadGallery(), loadCenik()]);
+    await Promise.all([loadGallery(), loadCenik(), loadReviews()]);
   }
 
   // Spusť po načtení DOM

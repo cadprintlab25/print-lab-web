@@ -10,12 +10,13 @@
   <meta property="og:url" content="https://print-lab.netlify.app/">
   <meta property="og:title" content="PRINT LAB — 3D Tisk, Gravírování &amp; CAD">
   <meta property="og:description" content="Zakázkový 3D tisk, laserové gravírování a CAD konstrukce. Ing. Marek Petschenka, Věžnice u Jihlavy.">
-  <meta property="og:image" content="https://print-lab.netlify.app/img/og-image.jpg">
+  <meta property="og:image" content="https://print-lab.netlify.app/img/snapmaker.jpg">
   <meta property="og:locale" content="cs_CZ">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://print-lab.netlify.app/">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="preconnect" href="https://identity.netlify.com">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -397,6 +398,18 @@
 
 <!-- EQUIPMENT section removed — replaced by printer panel in features section -->
 
+<!-- ===================== REFERENCE ===================== -->
+<section class="reviews-section" data-cms="reviews-section" style="display:none;padding:var(--section-py) 0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label section-label-pulse">Reference</span>
+      <h2 class="section-title">Co říkají <span class="gradient-text">zákazníci</span></h2>
+      <p class="section-desc">Zpětná vazba od lidí, pro které jsem už něco vyrobil.</p>
+    </div>
+    <div class="reviews-grid" data-cms="reviews-grid"></div>
+  </div>
+</section>
+
 <!-- ===================== CTA SECTION ===================== -->
 <section class="cta-section">
   <div class="container">
@@ -533,7 +546,7 @@
 </footer>
 
 <script src="js/main.js?v=5"></script>
-  <script src="js/cms-loader.js?v=4"></script>
+  <script src="js/cms-loader.js?v=6"></script>
 
   <!-- Netlify Identity Widget — zpracuje odkaz z pozvánkového e-mailu -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" crossorigin="anonymous"></script>
