@@ -1940,6 +1940,24 @@ a:hover .contact-value { color: var(--accent); }
   font-weight: 700;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+/* Jemný stínový náznak, že tabulku lze posunout doprava (jen když se nevejde) */
+@media (max-width: 640px) {
+  .table-scroll {
+    background:
+      linear-gradient(to right, var(--bg-primary) 0%, transparent 2%) left,
+      linear-gradient(to left, rgba(0,0,0,0.12) 0%, transparent 12%) right;
+    background-repeat: no-repeat;
+    background-size: 24px 100%, 24px 100%;
+    background-attachment: local, scroll;
+  }
+}
+
 .pricing-table {
   width: 100%;
   border-collapse: separate;
@@ -2359,6 +2377,29 @@ a:hover .contact-value { color: var(--accent); }
 .tag-orange { background: var(--accent-subtle); color: var(--accent); border-color: var(--accent-border); }
 .tag-blue   { background: var(--blue-subtle);   color: var(--blue);   border-color: rgba(59,130,246,0.3); }
 .tag-green  { background: rgba(16,185,129,0.07); color: var(--success); border-color: rgba(16,185,129,0.3); }
+
+/* =====================
+   GRID OVERFLOW FIX
+   Grid items default to min-width:auto, which lets long unbreakable
+   text or images force the column (and whole page) wider than the
+   viewport on narrow screens. min-width:0 lets them shrink properly.
+   ===================== */
+.hero-content > *,
+.services-grid > *,
+.features-content > *,
+.stats-grid > *,
+.footer-grid > *,
+.about-grid > *,
+.values-grid > *,
+.service-detail-grid > *,
+.process-steps > *,
+.contact-layout > *,
+.form-row > *,
+.reviews-grid > *,
+.calc-row > *,
+.grid-2 > *, .grid-3 > *, .grid-4 > * {
+  min-width: 0;
+}
 
 /* =====================
    RESPONSIVE
