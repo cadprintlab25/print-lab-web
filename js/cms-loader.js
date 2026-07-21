@@ -140,11 +140,9 @@
     const manifest = await fetchJSON('/data/gallery-manifest.json');
     if (!manifest || !manifest.files || manifest.files.length === 0) return;
 
-    const items = [];
-    for (const file of manifest.files) {
-      const item = await fetchJSON('/data/gallery/' + file);
-      if (item) items.push(item);
-    }
+    // Paralelní načtení všech položek najednou (místo jedné za druhou)
+    const results = await Promise.all(manifest.files.map(file => fetchJSON('/data/gallery/' + file)));
+    const items = results.filter(Boolean);
 
     if (items.length === 0) return;
 
