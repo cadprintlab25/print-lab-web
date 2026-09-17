@@ -119,10 +119,36 @@ document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observ
    protože položky galerie se do DOM vkládají asynchronně až po načtení JSON. */
 
 /* ---- File upload zone ---- */
-const fileUploadZone = document.getElementById('fileUploadZone');
-const fileInput       = document.getElementById('attachments');
-const fileList        = document.getElementById('fileList');
-let selectedFiles     = [];
+const fileUploadZone    = document.getElementById('fileUploadZone');
+const fileInput          = document.getElementById('attachments');
+const fileList           = document.getElementById('fileList');
+const fileUploadWarning  = document.getElementById('fileUploadWarning');
+let selectedFiles        = [];
+
+/* Netlify Forms má tvrdý limit 8 MB na celý požadavek — 7 MB necháváme
+   jako bezpečnou rezervu pro textová pole a hlavičky multipart zprávy. */
+const MAX_TOTAL_ATTACH_BYTES = 7 * 1024 * 1024;
+
+function addFiles(newFiles) {
+  let totalSize = selectedFiles.reduce((sum, f) => sum + f.size, 0);
+  let rejected = false;
+  newFiles.forEach(f => {
+    if (selectedFiles.find(s => s.name === f.name && s.size === f.size)) return;
+    if (totalSize + f.size > MAX_TOTAL_ATTACH_BYTES) { rejected = true; return; }
+    selectedFiles.push(f);
+    totalSize += f.size;
+  });
+  syncFileInput();
+  renderFileList();
+  if (fileUploadWarning) {
+    if (rejected) {
+      fileUploadWarning.textContent = 'Některé soubory se nevešly do limitu 7 MB celkem, a proto nebyly přidány. Zmenšete je nebo odešlete zvlášť e-mailem.';
+      fileUploadWarning.style.display = 'block';
+    } else {
+      fileUploadWarning.style.display = 'none';
+    }
+  }
+}
 
 function formatSize(bytes) {
   if (bytes < 1024)       return bytes + ' B';
@@ -161,6 +187,7 @@ window.removeFile = function(idx) {
   selectedFiles.splice(idx, 1);
   syncFileInput();
   renderFileList();
+  if (fileUploadWarning) fileUploadWarning.style.display = 'none';
 };
 
 function syncFileInput() {
@@ -172,13 +199,7 @@ function syncFileInput() {
 
 if (fileInput) {
   fileInput.addEventListener('change', function() {
-    Array.from(fileInput.files).forEach(f => {
-      if (!selectedFiles.find(s => s.name === f.name && s.size === f.size)) {
-        selectedFiles.push(f);
-      }
-    });
-    syncFileInput();
-    renderFileList();
+    addFiles(Array.from(fileInput.files));
   });
 }
 
@@ -191,17 +212,13 @@ if (fileUploadZone) {
       e.preventDefault();
       fileUploadZone.classList.remove('drag-over');
       if (ev === 'drop') {
-        Array.from(e.dataTransfer.files).forEach(f => {
-          if (!selectedFiles.find(s => s.name === f.name && s.size === f.size)) selectedFiles.push(f);
-        });
-        syncFileInput();
-        renderFileList();
+        addFiles(Array.from(e.dataTransfer.files));
       }
     });
   });
 }
 
-/* ---- Form handling: Poptávka (Web3Forms AJAX) ---- */
+/* ---- Form handling: Poptávka (Netlify Forms AJAX) ---- */
 const poptavkaForm = document.getElementById('poptavkaForm');
 if (poptavkaForm) {
   poptavkaForm.addEventListener('submit', function(e) {
@@ -214,18 +231,16 @@ if (poptavkaForm) {
     submitBtn.innerHTML = spinSvg + ' Odesílám…';
 
     const formData = new FormData(poptavkaForm);
-    const fileInput = document.getElementById('attachments');
-    if (fileInput && fileInput.files.length > 0) {
-      const names = Array.from(fileInput.files).map(f => f.name).join(', ');
-      const desc = formData.get('description') || '';
-      formData.set('description', desc + '\n\n📎 Zákazník přiložil soubory: ' + names);
-      formData.delete('attachments');
-    }
+    // Netlify Forms podporuje jen 1 soubor na pole -> každou přílohu
+    // pošleme pod vlastním jménem, aby dorazily všechny jako skutečné přílohy.
+    formData.delete('attachments');
+    selectedFiles.forEach((file, idx) => {
+      formData.append('attachment_' + (idx + 1), file, file.name);
+    });
 
-    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
-      .then(res => res.json())
-      .then(data => {
-        if (!data.success) throw new Error(data.message || 'Chyba odeslání');
+    fetch('/', { method: 'POST', body: formData })
+      .then(res => {
+        if (!res.ok) throw new Error('Chyba odeslání');
         submitBtn.innerHTML = '✓ Odesláno!';
         submitBtn.style.background = '#10b981';
         if (successMsg) successMsg.style.display = 'block';
