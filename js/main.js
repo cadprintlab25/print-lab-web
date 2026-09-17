@@ -126,22 +126,30 @@ const fileUploadWarning  = document.getElementById('fileUploadWarning');
 let selectedFiles        = [];
 
 /* Netlify Forms má tvrdý limit 8 MB na celý požadavek — 7 MB necháváme
-   jako bezpečnou rezervu pro textová pole a hlavičky multipart zprávy. */
+   jako bezpečnou rezervu pro textová pole a hlavičky multipart zprávy.
+   Počet 5 odpovídá počtu skrytých attachment_1..5 polí v HTML (Netlify
+   podporuje jen 1 soubor na pole, viz. poznámka u nich). */
 const MAX_TOTAL_ATTACH_BYTES = 7 * 1024 * 1024;
+const MAX_FILES = 5;
 
 function addFiles(newFiles) {
   let totalSize = selectedFiles.reduce((sum, f) => sum + f.size, 0);
-  let rejected = false;
+  let rejectedSize = false;
+  let rejectedCount = false;
   newFiles.forEach(f => {
     if (selectedFiles.find(s => s.name === f.name && s.size === f.size)) return;
-    if (totalSize + f.size > MAX_TOTAL_ATTACH_BYTES) { rejected = true; return; }
+    if (selectedFiles.length >= MAX_FILES) { rejectedCount = true; return; }
+    if (totalSize + f.size > MAX_TOTAL_ATTACH_BYTES) { rejectedSize = true; return; }
     selectedFiles.push(f);
     totalSize += f.size;
   });
   syncFileInput();
   renderFileList();
   if (fileUploadWarning) {
-    if (rejected) {
+    if (rejectedCount) {
+      fileUploadWarning.textContent = 'Lze přiložit maximálně ' + MAX_FILES + ' souborů. Další soubory nebyly přidány.';
+      fileUploadWarning.style.display = 'block';
+    } else if (rejectedSize) {
       fileUploadWarning.textContent = 'Některé soubory se nevešly do limitu 7 MB celkem, a proto nebyly přidány. Zmenšete je nebo odešlete zvlášť e-mailem.';
       fileUploadWarning.style.display = 'block';
     } else {
@@ -230,13 +238,22 @@ if (poptavkaForm) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = spinSvg + ' Odesílám…';
 
-    const formData = new FormData(poptavkaForm);
-    // Netlify Forms podporuje jen 1 soubor na pole -> každou přílohu
-    // pošleme pod vlastním jménem, aby dorazily všechny jako skutečné přílohy.
-    formData.delete('attachments');
-    selectedFiles.forEach((file, idx) => {
-      formData.append('attachment_' + (idx + 1), file, file.name);
+    // Netlify Forms rozpozná jako přílohu jen skutečná type="file" pole,
+    // která existovala v HTML už při nasazení (attachment_1..5) — proto
+    // do nich teď přesuneme vybrané soubory, místo ručního .append().
+    const attachSlots = Array.from(poptavkaForm.querySelectorAll('input[type="file"][name^="attachment_"]'));
+    attachSlots.forEach((slot, idx) => {
+      if (idx < selectedFiles.length) {
+        const dt = new DataTransfer();
+        dt.items.add(selectedFiles[idx]);
+        slot.files = dt.files;
+        slot.disabled = false;
+      } else {
+        slot.disabled = true; // vyřadí prázdný slot z FormData
+      }
     });
+
+    const formData = new FormData(poptavkaForm);
 
     fetch('/', { method: 'POST', body: formData })
       .then(res => {
